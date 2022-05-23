@@ -2,37 +2,151 @@
 @use '/src/styles/mixins/position';
 
 .gnb {
-  position: relative;
+  @include position.fixed(0 auto auto 0);
   display: flex;
-  justify-content: center;
-  padding: 24px 0;
-  border-bottom: 1px solid colors.$GRAYE;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 320px;
+  height: 100vh;
+  padding: 0 40px;
+  background-color: colors.$WHITE;
+  box-shadow: 4px 0 10px rgba(colors.$BLACK, 0.04);
 
-  ul {
+  h1 {
+    padding: 60px 0;
+    border-bottom: 1px solid #edeff1;
+
+    .logoImg {
+      width: 124px;
+      height: 30px;
+    }
+  }
+
+  .subTitle {
+    margin: 0 0 13px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+    color: colors.$SUB;
+  }
+
+  .serviceWrap {
+    margin-top: 53px;
+
+    .dropdownWrap {
+      position: relative;
+      margin-bottom: 53px;
+
+      select {
+        appearance: none;
+        width: 100%;
+        padding: 20px;
+        font-size: 16px;
+        font-weight: 700;
+        color: colors.$MAIN_FONT;
+        border: 1px solid #d1d8dc;
+        border-radius: 10px;
+      }
+
+      .arrowIcon {
+        @include position.absolute(25px 26px auto auto);
+        pointer-events: none;
+      }
+    }
+  }
+
+  .adWrap {
+    .navWrap {
+      a {
+        display: inline-block;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: left;
+        border-radius: 10px;
+
+        .chartIcon {
+          width: 20px;
+          height: 20px;
+          fill: colors.$MAIN_FONT;
+        }
+
+        span {
+          margin-left: 12px;
+          color: colors.$MAIN_FONT;
+        }
+
+        &.active {
+          background-color: #edeff1;
+
+          .chartIcon {
+            fill: colors.$ACTIVE;
+          }
+
+          span {
+            color: colors.$ACTIVE;
+          }
+        }
+      }
+    }
+  }
+
+  .guideWrap {
     display: flex;
-  }
+    column-gap: 8px;
+    align-items: center;
+    width: 100%;
+    padding: 30px 20px;
+    margin-bottom: 40px;
+    background-color: #e5f4fd;
+    border-radius: 10px;
 
-  li {
-    + li {
-      margin-left: 14px;
+    .guideIconWrap {
+      width: 40px;
+      height: 40px;
+      background-color: colors.$ACTIVE;
+      border-radius: 50%;
+
+      .guideIcon {
+        width: 16px;
+        height: 22px;
+        margin-top: 8px;
+      }
+    }
+
+    .guideTextWrap {
+      p {
+        margin: 0 0 5px -7px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 19px;
+        color: colors.$MAIN_FONT;
+      }
+
+      span {
+        font-size: 12px;
+        font-weight: 500;
+        color: colors.$SUB;
+      }
     }
   }
 
-  a {
-    padding: 4px 14px;
-    color: colors.$GRAY2;
+  .conditionWrap {
+    margin: 0 0 56px 20px;
+    font-size: 12px;
 
-    &.isActive {
-      font-weight: 600;
+    p {
+      margin-bottom: 12px;
+      color: colors.$SUB;
     }
-  }
 
-  .rightWing {
-    @include position.absolute(50% 24px auto auto);
-    transform: translateY(-50%);
-
-    button {
-      margin-left: 14px;
+    a {
+      color: colors.$SUB;
+      text-decoration: underline;
     }
   }
 }
