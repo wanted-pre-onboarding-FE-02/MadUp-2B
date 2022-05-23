@@ -23,13 +23,13 @@ const getFuck = () => {
     naver: [...dataStructure],
     kakao: [...dataStructure],
   }
-
+  console.log(CHANNEL_DATA)
   CHANNEL_DATA.forEach((d) => {
     data[d.channel].find((item) => item.category === '광고비')!.value += d.cost
-    data[d.channel].find((item) => item.category === '매출')!.value += d.roas
+    data[d.channel].find((item) => item.category === '매출')!.value += (d.roas * d.cost) / 100
     data[d.channel].find((item) => item.category === '노출 수')!.value += d.imp
-    data[d.channel].find((item) => item.category === '클릭 수')!.value += d.ctr
-    data[d.channel].find((item) => item.category === '전환 수')!.value += d.cvr
+    data[d.channel].find((item) => item.category === '클릭 수')!.value += d.click
+    data[d.channel].find((item) => item.category === '전환 수')!.value += d.convValue
   })
 
   return data
@@ -52,10 +52,19 @@ const getFuck = () => {
 // convValue / cost * 100 = roas
 // ['cost', 'const x roas', 'imp', 'click', 'imp * cvr']
 
+/*
+
+  광고비 : cost
+  매출 : roas * cost/100
+  노출수: imp
+  클릭수: click
+  전환수: convValue
+*/
+
 const tickFormat = ['광고비', '매출', '노출 수', '클릭 수', '전환 수']
 
 const { google, facebook, naver, kakao } = getFuck()
-
+console.log(google)
 const Chart = ({ data }: Props) => {
   return (
     <div>
