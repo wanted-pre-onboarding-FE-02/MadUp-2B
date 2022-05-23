@@ -1,42 +1,281 @@
-import { useMount } from 'react-use'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { ArrowDown } from 'assets/svgs'
 import styles from './routes.module.scss'
 
-import { useAppSelector, useEffect, useGA } from 'hooks'
-import { getTheme } from 'states/system'
-
-import Corona from './Chart'
-import TodoList from './TodoList'
-import Weather from './Weathers'
-import GNB from 'routes/_shared/GNB'
-
 const App = () => {
-  const theme = useAppSelector(getTheme)
-  const { initializeGA, gaPV } = useGA()
-  const { pathname, search } = useLocation()
-
-  useMount(() => {
-    initializeGA()
-    document.documentElement.setAttribute('color-theme', theme)
-  })
-
-  useEffect(() => {
-    gaPV(`${pathname}${search}`)
-  }, [gaPV, pathname, search])
-
   return (
-    <div className={styles.appWrapper}>
-      <GNB />
-      <div className={styles.app}>
-        <Routes>
-          <Route path='/' element={<TodoList />} />
-          <Route path='corona' element={<Corona />} />
-          <Route path='todo' element={<TodoList />} />
-          <Route path='weather' element={<Weather />}>
-            <Route path=':city' element={<Weather />} />
-          </Route>
-          <Route path='*' element={<div>404</div>} />
-        </Routes>
+    <div className={styles.management}>
+      <h1 className={styles.management__title}>광고관리</h1>
+      <div className={styles.wrapper}>
+        <div className={styles.option}>
+          <button type='button' className={styles.option__dropbar}>
+            전체 광고 <ArrowDown className={styles.icon} />
+          </button>
+          <button type='button' className={styles.option__button}>
+            광고 만들기
+          </button>
+        </div>
+        <div className={styles.content}>
+          <div className={styles.item}>
+            <h1 className={styles.item__title}>웹광고_20210603123030</h1>
+            <div className={styles.divider} />
+            <div className={styles.item__content}>
+              <h1>상태</h1>
+              <p>진행중</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 생성일</h1>
+              <p>2021-06-04</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>일 희망 예산</h1>
+              <p>40만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 수익률</h1>
+              <p>694%</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>매출</h1>
+              <p>26,071만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 비용</h1>
+              <p>3,759만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <button type='button' className={styles.item__editBtn}>
+              수정하기
+            </button>
+          </div>
+          <div className={styles.item}>
+            <h1 className={styles.item__title}>웹광고_20210603123030</h1>
+            <div className={styles.divider} />
+            <div className={styles.item__content}>
+              <h1>상태</h1>
+              <p>진행중</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 생성일</h1>
+              <p>2021-06-04</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>일 희망 예산</h1>
+              <p>40만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 수익률</h1>
+              <p>694%</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>매출</h1>
+              <p>26,071만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 비용</h1>
+              <p>3,759만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <button type='button' className={styles.item__editBtn}>
+              수정하기
+            </button>
+          </div>
+          <div className={styles.item}>
+            <h1 className={styles.item__title}>웹광고_20210603123030</h1>
+            <div className={styles.divider} />
+            <div className={styles.item__content}>
+              <h1>상태</h1>
+              <p>진행중</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 생성일</h1>
+              <p>2021-06-04</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>일 희망 예산</h1>
+              <p>40만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 수익률</h1>
+              <p>694%</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>매출</h1>
+              <p>26,071만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 비용</h1>
+              <p>3,759만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <button type='button' className={styles.item__editBtn}>
+              수정하기
+            </button>
+          </div>
+        </div>
+        <div className={styles.content}>
+          <div className={styles.item}>
+            <h1 className={styles.item__title}>웹광고_20210603123030</h1>
+            <div className={styles.divider} />
+            <div className={styles.item__content}>
+              <h1>상태</h1>
+              <p>진행중</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 생성일</h1>
+              <p>2021-06-04</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>일 희망 예산</h1>
+              <p>40만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 수익률</h1>
+              <p>694%</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>매출</h1>
+              <p>26,071만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 비용</h1>
+              <p>3,759만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <button type='button' className={styles.item__editBtn}>
+              수정하기
+            </button>
+          </div>
+          <div className={styles.item}>
+            <h1 className={styles.item__title}>웹광고_20210603123030</h1>
+            <div className={styles.divider} />
+            <div className={styles.item__content}>
+              <h1>상태</h1>
+              <p>진행중</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 생성일</h1>
+              <p>2021-06-04</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>일 희망 예산</h1>
+              <p>40만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 수익률</h1>
+              <p>694%</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>매출</h1>
+              <p>26,071만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 비용</h1>
+              <p>3,759만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <button type='button' className={styles.item__editBtn}>
+              수정하기
+            </button>
+          </div>
+          <div className={styles.item}>
+            <h1 className={styles.item__title}>웹광고_20210603123030</h1>
+            <div className={styles.divider} />
+            <div className={styles.item__content}>
+              <h1>상태</h1>
+              <p>진행중</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 생성일</h1>
+              <p>2021-06-04</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>일 희망 예산</h1>
+              <p>40만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 수익률</h1>
+              <p>694%</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>매출</h1>
+              <p>26,071만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <div className={styles.item__content}>
+              <h1>광고 비용</h1>
+              <p>3,759만원</p>
+            </div>
+            <div className={styles.divider} />
+
+            <button type='button' className={styles.item__editBtn}>
+              수정하기
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   )

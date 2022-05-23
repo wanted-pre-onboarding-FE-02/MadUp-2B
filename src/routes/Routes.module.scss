@@ -1,7 +1,119 @@
 @use '/src/styles/constants/colors';
 
-.app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.management {
+  background-color: #f6f7f8;
+
+  &__title {
+    width: 1120px;
+    height: 80px;
+    padding: 25px 40px;
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 30px;
+    color: #3a474e;
+    letter-spacing: 0.3px;
+  }
+
+  .wrapper {
+    width: 1039px;
+    height: 1020px;
+    padding: 40px;
+    margin: 0 40px;
+    margin-top: 30px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, $alpha: 0.04);
+
+    .option {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+
+      &__dropbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 123px;
+        height: 40px;
+        padding: 12px 20px;
+        font-size: 14px;
+        border: 1px solid #d1d8dc;
+        border-radius: 10px;
+
+        & .icon {
+          width: 12px;
+        }
+      }
+
+      &__button {
+        width: 108px;
+        height: 40px;
+        padding: 12px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #ffffff;
+        background-color: #586cf5;
+        border-radius: 10px;
+      }
+    }
+
+    & .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .item {
+      width: 305px;
+      height: 420px;
+      padding: 40px 20px;
+      margin-bottom: 20px;
+      border: 1px solid #d1d8dc;
+      border-radius: 10px;
+
+      &__title {
+        margin-bottom: 40px;
+        font-size: 16px;
+        font-weight: 700px;
+        color: #3a474e;
+      }
+
+      &__content {
+        display: flex;
+        padding: 13px 0;
+        font-size: 12px;
+
+        & h1 {
+          width: 100px;
+          font-weight: 500;
+          color: #94a2ad;
+        }
+
+        & p {
+          font-weight: 700;
+          color: #3a474e;
+        }
+      }
+
+      .divider {
+        width: 265px;
+        height: 1px;
+        background-color: #edeff1;
+      }
+
+      &__editBtn {
+        width: 92px;
+        height: 40px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #3a474e;
+        border: 1px solid #d1d8dc;
+        border-radius: 10px;
+      }
+
+      & button:last-child {
+        margin-top: 20px;
+      }
+    }
+  }
 }
