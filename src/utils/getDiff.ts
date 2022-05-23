@@ -44,7 +44,6 @@ export async function getDiffData(startDate: string, endDate: string) {
 
 export async function getCurrentData(startDate: string, endDate: string) {
   const currentData = await getSalesStatus()
-
   const currentIdx = currentData.findIndex((data) => data.date === `${startDate}`)
   const lastIdx = currentData.findIndex((data) => data.date === `${endDate}`)
 

@@ -1,45 +1,71 @@
 import { useEffect, useState } from 'react'
 import dayjs from 'dayjs'
+import ReactDatePicker from 'react-datepicker'
+import { DateRange, DayPicker } from 'react-day-picker'
 
 import { useRecoil } from 'hooks/state'
 import { currentDataState, diffBetweenDataState } from 'recoil/atom'
 import { getCurrentData, getDiffData } from 'utils/getDiff'
 
 import styles from './status.module.scss'
-import Calendar from 'react-calendar'
+import 'react-datepicker/dist/react-datepicker.css'
+import 'react-day-picker/dist/style.css'
 
 const titleKeys = ['ROAS', '광고비', '노출 수', '클릭 수', '전환 수', '매출']
-const initialDate = new Date(dayjs('2022-03-10').format())
-const firstDate = new Date(dayjs('2022-02-01').format())
-const lastDate = new Date(dayjs('2022-04-20').format())
+
+const firstDate = new Date('2022-02-01')
+const lastDate = new Date('2022-04-20')
+
+const initialRange = { from: new Date('2022-03-01'), to: new Date('2022-03-04') }
 
 export const Status = () => {
   const [currentData, setCurrentData] = useRecoil(currentDataState)
   const [diffData, setDiffData] = useRecoil(diffBetweenDataState)
-  const [date, setDate] = useState(initialDate)
+  const [range, setRange] = useState<DateRange | undefined>(initialRange)
+  const [isVisible, setIsVisible] = useState(false)
+
+  const startDate = dayjs(range?.from).format('YYYY-MM-DD')
+  const endDate = dayjs(range?.to).format('YYYY-MM-DD')
+
+  const handleDatePicker = () => {
+    setIsVisible((prev) => !prev)
+  }
 
   useEffect(() => {
-    getCurrentData('2022-02-06', '2022-02-10').then((data2) => setCurrentData(data2))
-    getDiffData('2022-02-06', '2022-02-10').then((data3) => setDiffData(data3))
-  }, [setCurrentData, setDiffData])
+    getCurrentData(startDate, endDate).then((data2) => setCurrentData(data2))
+    getDiffData(startDate, endDate).then((data3) => setDiffData(data3))
+  }, [endDate, setCurrentData, setDiffData, startDate])
 
   return (
     <section className={styles.statusWrapper}>
       <div className={styles.statusHeader}>
         <h1>대시보드</h1>
-        <div>
-          <Calendar value={date} maxDate={lastDate} minDate={firstDate} />
-          <p>데이트타임 피커가 들어갈 자리</p>
-        </div>
       </div>
-      {/* <div className={styles.statusInner}>
-        <h3>통합 광고 현황</h3>
+      <div className={styles.statusInner}>
+        <div className={styles.datePicker}>
+          <h3>통합 광고 현황</h3>
+          <button type='button' onClick={handleDatePicker}>
+            {startDate} ~ {endDate}
+          </button>
+          {isVisible && (
+            <DayPicker
+              mode='range'
+              min={1}
+              max={5}
+              selected={range}
+              onSelect={setRange}
+              fromDate={firstDate}
+              toDate={lastDate}
+              className={styles.picker}
+            />
+          )}
+        </div>
         <ul className={styles.statusBoard}>
           {Object.entries(currentData).map(([key, value], index) => (
             <li key={`current-${value}`}>
               <dl>
                 <dt>{titleKeys[index]}</dt>
-                <dd>{value}</dd>
+                <dd>{value?.toLocaleString()}</dd>
               </dl>
               <dl>
                 <dt className={styles.isNotVisible}>diff</dt>
@@ -48,7 +74,7 @@ export const Status = () => {
             </li>
           ))}
         </ul>
-      </div> */}
+      </div>
     </section>
   )
 }
