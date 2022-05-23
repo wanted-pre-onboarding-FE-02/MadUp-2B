@@ -1,43 +1,48 @@
+import { IDataSet } from 'type/adListDataSet'
 import styles from './managementItem.module.scss'
 
-const ManagementItem = () => {
+const ManagementItem = ({ id, adType, title, budget, status, startDate, endDate, report }: IDataSet) => {
   return (
     <div className={styles.item}>
-      <h1 className={styles.item__title}>웹광고_20210603123030</h1>
+      <h1 className={styles.item__title}>
+        {adType}_{title}
+      </h1>
       <div className={styles.divider} />
       <div className={styles.item__content}>
         <h1>상태</h1>
-        <p>진행중</p>
+        <p>{status}</p>
       </div>
       <div className={styles.divider} />
 
       <div className={styles.item__content}>
         <h1>광고 생성일</h1>
-        <p>2021-06-04</p>
+        <p>
+          {startDate} {endDate && `(${endDate})`}
+        </p>
       </div>
       <div className={styles.divider} />
 
       <div className={styles.item__content}>
         <h1>일 희망 예산</h1>
-        <p>40만원</p>
+        <p>{budget}</p>
       </div>
       <div className={styles.divider} />
 
       <div className={styles.item__content}>
         <h1>광고 수익률</h1>
-        <p>694%</p>
+        <p>{report.roas} %</p>
       </div>
       <div className={styles.divider} />
 
       <div className={styles.item__content}>
         <h1>매출</h1>
-        <p>26,071만원</p>
+        <p>{report.convValue}</p>
       </div>
       <div className={styles.divider} />
 
       <div className={styles.item__content}>
         <h1>광고 비용</h1>
-        <p>3,759만원</p>
+        <p>{report.cost}</p>
       </div>
       <div className={styles.divider} />
 
