@@ -2,7 +2,7 @@ import { IDataSet } from 'type/adListDataSet'
 
 import styles from './managementItem.module.scss'
 
-const ManagementItem = ({ id, adType, title, budget, status, startDate, endDate, report }: IDataSet) => {
+const ManagementItem = ({ adType, title, budget, status, startDate, endDate, report }: IDataSet) => {
   return (
     <div className={styles.item}>
       <h1 className={styles.item__title}>
