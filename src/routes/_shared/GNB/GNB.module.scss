@@ -14,7 +14,7 @@
 
   h1 {
     padding: 60px 0;
-    border-bottom: 1px solid #edeff1;
+    border-bottom: 1px solid colors.$BACK_ACTIVE;
 
     .logoImg {
       width: 124px;
@@ -37,19 +37,43 @@
       position: relative;
       margin-bottom: 53px;
 
-      select {
-        appearance: none;
+      .dropdown {
         width: 100%;
         padding: 20px;
         font-size: 16px;
         font-weight: 700;
         color: colors.$MAIN_FONT;
-        border: 1px solid #d1d8dc;
+        text-align: left;
+        border: 1px solid colors.$BORDER;
         border-radius: 10px;
       }
 
+      .dropdownListWrap {
+        @include position.absolute(66px 0 auto auto);
+        display: none;
+        width: 100%;
+        background-color: colors.$WHITE;
+        border: 1px solid colors.$BORDER;
+        border-radius: 10px;
+
+        li:first-child {
+          border-bottom: 1px dashed colors.$BORDER;
+        }
+
+        button {
+          display: inline-block;
+          width: 100%;
+          padding: 15px;
+          margin-left: 4px;
+          font-size: 16px;
+          font-weight: 500;
+          color: colors.$MAIN_FONT;
+          text-align: left;
+        }
+      }
+
       .arrowIcon {
-        @include position.absolute(25px 26px auto auto);
+        @include position.absolute(27px 26px auto auto);
         pointer-events: none;
       }
     }
@@ -69,7 +93,7 @@
         text-align: left;
         border-radius: 10px;
 
-        .chartIcon {
+        .icon {
           width: 20px;
           height: 20px;
           fill: colors.$MAIN_FONT;
@@ -81,14 +105,14 @@
         }
 
         &.active {
-          background-color: #edeff1;
+          background-color: colors.$BACK_ACTIVE;
 
-          .chartIcon {
-            fill: colors.$ACTIVE;
+          .icon {
+            fill: colors.$TEXT_ACTIVE;
           }
 
           span {
-            color: colors.$ACTIVE;
+            color: colors.$TEXT_ACTIVE;
           }
         }
       }
@@ -102,13 +126,13 @@
     width: 100%;
     padding: 30px 20px;
     margin-bottom: 40px;
-    background-color: #e5f4fd;
+    background-color: colors.$GUIDE_BACK;
     border-radius: 10px;
 
     .guideIconWrap {
       width: 40px;
       height: 40px;
-      background-color: colors.$ACTIVE;
+      background-color: colors.$TEXT_ACTIVE;
       border-radius: 50%;
 
       .guideIcon {
