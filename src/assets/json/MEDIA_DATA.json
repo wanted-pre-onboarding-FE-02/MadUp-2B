@@ -1,56 +1,5 @@
 [
-  {
-    "channel": "google",
-    "date": "2022-02-01",
-    "imp": 50,
-    "click": 7,
-    "cost": 2098,
-    "convValue": 0,
-    "ctr": 14.0000,
-    "cvr": 0.0000,
-    "cpc": 299.7143,
-    "cpa": 0.0000,
-    "roas": 0.0000
-  },
-  {
-    "channel": "google",
-    "date": "2022-02-02",
-    "imp": 61,
-    "click": 13,
-    "cost": 1928,
-    "convValue": 0,
-    "ctr": 21.3115,
-    "cvr": 0.0000,
-    "cpc": 148.3077,
-    "cpa": 0.0000,
-    "roas": 0.0000
-  },
-  {
-    "channel": "google",
-    "date": "2022-02-03",
-    "imp": 110,
-    "click": 22,
-    "cost": 2351,
-    "convValue": 7,
-    "ctr": 20.0000,
-    "cvr": 31.8182,
-    "cpc": 106.8636,
-    "cpa": 335.8571,
-    "roas": 6295.4062
-  },
-  {
-    "channel": "google",
-    "date": "2022-02-04",
-    "imp": 109,
-    "click": 25,
-    "cost": 2566,
-    "convValue": 0,
-    "ctr": 22.9358,
-    "cvr": 0.0000,
-    "cpc": 102.6400,
-    "cpa": 0.0000,
-    "roas": 0.0000
-  },
+  
   {
     "channel": "google",
     "date": "2022-02-05",

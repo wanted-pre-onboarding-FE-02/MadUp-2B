@@ -1,12 +1,13 @@
 import styles from './routes.module.scss'
 
-import Corona from './Chart'
+import PercentColumnChart from 'components/PercentColumnChart'
+import Practice from 'components/PercentColumnChart/Practice'
 
 const App = () => {
   return (
     <div className={styles.appWrapper}>
       <div className={styles.app}>
-        <Corona />
+        <PercentColumnChart />
       </div>
     </div>
   )
