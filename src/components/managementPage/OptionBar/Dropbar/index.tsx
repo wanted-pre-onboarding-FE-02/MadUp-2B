@@ -1,12 +1,15 @@
 import { useState, MouseEvent } from 'react'
 
+import { useRecoilState } from 'recoil'
+import { optionState } from 'recoil/management'
+
 import styles from './dropbar.module.scss'
 
 import { ArrowDown } from 'assets/svgs'
 
 const Dropbar = () => {
   const [isDropbarClicked, setIsDropbarClicked] = useState(false)
-  const [selectedOption, setSelectedOption] = useState('전체 광고')
+  const [selectedOption, setSelectedOption] = useRecoilState(optionState)
 
   const handleDropbar = () => {
     setIsDropbarClicked((prev) => !prev)

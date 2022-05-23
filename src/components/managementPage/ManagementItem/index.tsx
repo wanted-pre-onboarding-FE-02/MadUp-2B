@@ -1,4 +1,5 @@
 import { IDataSet } from 'type/adListDataSet'
+
 import styles from './managementItem.module.scss'
 
 const ManagementItem = ({ id, adType, title, budget, status, startDate, endDate, report }: IDataSet) => {

@@ -4,11 +4,14 @@ import reportWebVitals from './reportWebVitals'
 import './styles/index.scss'
 
 import Routes from './routes'
+import { RecoilRoot } from 'recoil'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <Routes />
+    <RecoilRoot>
+      <Routes />
+    </RecoilRoot>
   </React.StrictMode>
 )
 

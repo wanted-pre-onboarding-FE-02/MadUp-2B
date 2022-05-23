@@ -1,4 +1,5 @@
 import DATA from '../data/wanted_FE_ad-list-data-set.json'
+
 import { getConvertedCurrnecy } from './convertCurrencyFormat'
 
 export const getConvertedData = () => {
