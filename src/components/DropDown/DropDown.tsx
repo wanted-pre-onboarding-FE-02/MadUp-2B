@@ -3,6 +3,7 @@ import useOnClickOutside from 'hooks/useOnClickOutside'
 import styles from './dropdown.module.scss'
 import useColorPickCallback from 'hooks/useColorPickCallback'
 import { cx } from 'styles'
+import { ArrowIcon } from 'assets/svgs'
 
 interface DropDownProps {
   menuList: string[]
@@ -36,6 +37,7 @@ const DropDown = ({ menuList, option, currentOption, changeCurrentMenu }: DropDo
         onClick={onClickOpenButton}
       >
         {currentOption}
+        <ArrowIcon />
       </button>
       {openDropdown ? (
         <div className={styles.menu}>
