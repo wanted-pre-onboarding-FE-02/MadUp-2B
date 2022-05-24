@@ -1,0 +1,47 @@
+@use '/src/styles/constants/colors';
+
+.wrapper {
+  width: 90%;
+  // height: 50%;
+  margin: 0 auto;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: block;
+    height: 15px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: colors.$GRAYE;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: colors.$GRAYA;
+    border-radius: 10px;
+  }
+
+  table {
+    width: 1100px;
+  }
+
+  th {
+    border-top: 1px solid colors.$GRAYA;
+    border-bottom: 1px solid colors.$GRAYA;
+  }
+
+  td {
+    border-bottom: 1px solid colors.$GRAYA;
+  }
+
+  th,
+  td {
+    width: 12.5%;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+  }
+
+  td.first {
+    text-align: left;
+  }
+}

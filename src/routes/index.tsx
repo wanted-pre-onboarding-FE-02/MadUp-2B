@@ -5,8 +5,7 @@ import GNB from 'routes/_shared/GNB'
 import Header from 'components/Header/index'
 
 import ManagementPage from 'components/managementPage'
-import PercentColumnChart from 'components/PercentColumnChart'
-import { Status } from 'components/Status'
+import Media from 'components/media'
 
 const App = () => {
   return (
@@ -15,7 +14,7 @@ const App = () => {
       <div className={styles.app}>
         <Header />
         <Routes>
-          <Route path='/' element={<PercentColumnChart />} />
+          <Route path='/' element={<Media />} />
           <Route path='management' element={<ManagementPage />} />
         </Routes>
       </div>

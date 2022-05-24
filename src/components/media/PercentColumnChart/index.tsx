@@ -1,12 +1,12 @@
 import { VictoryAxis, VictoryBar, VictoryChart, VictoryLegend, VictoryStack, VictoryTooltip } from 'victory'
-// import styles from './percentColumnChart.module.scss'
+import styles from './percentColumnChart.module.scss'
 import MEDIA_DATA from 'assets/json/MEDIA_DATA.json'
 import transformData from './transformData'
 
 const PercentColumnChart = () => {
   const dataList = transformData(MEDIA_DATA)
   return (
-    <div>
+    <div className={styles.wrapper}>
       <VictoryChart width={1400} height={800} domainPadding={{ x: 100, y: 10 }}>
         <VictoryLegend
           x={125}
