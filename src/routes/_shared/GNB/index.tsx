@@ -11,9 +11,7 @@ const GNB = () => {
   const [dropdownClick, setDropdownClick] = useState(false)
 
   const handleDropdownClick = () => {
-    setDropdownClick((prev) => {
-      return !prev
-    })
+    setDropdownClick((prev) => !prev)
   }
 
   const handleOptionClick = (event: React.MouseEvent<HTMLElement>) => {

@@ -5,6 +5,7 @@ import Header from 'components/Header/index'
 import styles from './routes.module.scss'
 import ManagementPage from 'components/managementPage'
 import { Status } from 'components/Status/Status'
+// import { Status } from 'components/Status'
 
 const App = () => {
   return (

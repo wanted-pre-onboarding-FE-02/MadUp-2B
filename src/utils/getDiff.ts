@@ -3,7 +3,7 @@ import { IDailyData, IDiffData } from 'types/advertise'
 import { getMinus, getPlus } from './num'
 
 function getSumObj(array: IDailyData[]) {
-  const sumArr = array.reduce((prev, current) => {
+  return array.reduce((prev, current) => {
     return {
       roas: getPlus(prev.roas, current.roas),
       cost: getPlus(prev.cost, current.cost),
@@ -13,7 +13,6 @@ function getSumObj(array: IDailyData[]) {
       sales: getPlus(prev.sales, current.sales),
     }
   })
-  return sumArr
 }
 
 export async function getDiffData(startDate: string, endDate: string) {
