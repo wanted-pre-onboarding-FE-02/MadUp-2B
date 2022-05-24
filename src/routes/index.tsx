@@ -4,7 +4,7 @@ import Header from 'components/Header/index'
 
 import styles from './routes.module.scss'
 import ManagementPage from 'routes/managementPage'
-import { Status } from 'routes/Status/Status'
+import DashboardPage from './dashboardPage'
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
       <div className={styles.app}>
         <Header />
         <Routes>
-          <Route path='/' element={<Status />} />
+          <Route path='/' element={<DashboardPage />} />
           <Route path='management' element={<ManagementPage />} />
         </Routes>
       </div>
