@@ -5,7 +5,7 @@ import { optionState } from 'recoil/management'
 
 import styles from './dropbar.module.scss'
 
-import { ArrowDown } from 'assets/svgs'
+import { ArrowIcon } from 'assets/svgs'
 
 const Dropbar = () => {
   const [isDropbarClicked, setIsDropbarClicked] = useState(false)
@@ -23,7 +23,7 @@ const Dropbar = () => {
   return (
     <div className={styles.dropbar}>
       <button type='button' className={styles.dropbar__btn} onClick={handleDropbar}>
-        {selectedOption} <ArrowDown className={styles.icon} />
+        {selectedOption} <ArrowIcon className={styles.icon} />
       </button>
       {isDropbarClicked && (
         <ul className={styles.dropbar__list}>
