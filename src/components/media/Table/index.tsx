@@ -1,10 +1,21 @@
 import styles from './table.module.scss'
 import transformData from './transformData'
-import MEDIA_DATA from 'assets/json/MEDIA_DATA.json'
+import { getMediaDataApi } from 'services/fakeApi'
+import { useQuery } from 'react-query'
 
 const Table = () => {
-  const { dataList, total } = transformData(MEDIA_DATA)
+  const { data } = useQuery(
+    'getAdvertiseStatus',
+    () =>
+      getMediaDataApi().then((res) => {
+        const result = transformData(res)
+        return result
+      }),
+    { suspense: true }
+  )
 
+  if (!data) return null
+  const { dataList, total } = data
   return (
     <div className={styles.wrapper}>
       <table>
@@ -21,18 +32,18 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {dataList.map((data, i) => {
+          {dataList.map((d, i) => {
             const key = `media-table-tr-${i}`
             return (
               <tr key={key}>
-                <td className={styles.first}>{data.channel}</td>
-                <td>{data.cost}</td>
-                <td>{data.sales}</td>
-                <td>{data.roas}</td>
-                <td>{data.imp}</td>
-                <td>{data.click}</td>
-                <td>{data.ctr}</td>
-                <td>{data.cpc}</td>
+                <td className={styles.first}>{d.channel}</td>
+                <td>{d.cost}</td>
+                <td>{d.sales}</td>
+                <td>{d.roas}</td>
+                <td>{d.imp}</td>
+                <td>{d.click}</td>
+                <td>{d.ctr}</td>
+                <td>{d.cpc}</td>
               </tr>
             )
           })}
