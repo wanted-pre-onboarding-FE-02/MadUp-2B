@@ -31,6 +31,7 @@ export const ListItem = ({ index, keyword, value }: IProps) => {
           </span>
           <span className={styles.isNothing}>{!diffData[keyword] && '―'}</span>
           {notEmptyDiffData?.toLocaleString()}
+          {/* {convertFormat(notEmptyDiffData, keyword)} */}
         </dd>
       </dl>
     </li>
