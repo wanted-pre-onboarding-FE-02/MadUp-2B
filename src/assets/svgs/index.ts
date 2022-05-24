@@ -1,1 +1,1 @@
-export { ReactComponent as ArrowDown } from './arrowdown.svg'
+export { ReactComponent as ArrowDown } from './arrow.svg'
