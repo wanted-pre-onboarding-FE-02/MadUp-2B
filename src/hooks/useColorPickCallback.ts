@@ -5,12 +5,12 @@ export default function useColorPickCallback() {
     const resultColor = {
       ROAS: 'red',
       광고비: 'orange',
-      노출수: 'yellow',
+      노출수: 'gold',
       클릭수: 'green',
       전환수: 'blue',
       매출: 'purple',
     }[data]
-    if (!data) return 'black'
+    if (!resultColor) return 'black'
     return resultColor
   }, [])
 }

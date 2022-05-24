@@ -13,28 +13,227 @@
   border: 1px solid #d1d8dc;
   border-radius: 10px;
 
+  .currentMenu {
+    &.red {
+      position: relative;
+      width: 123px;
+      height: 40px;
+
+      &::before {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        width: 10px;
+        height: 10px;
+        content: '';
+        background-color: colors.$RED;
+        border-radius: 5px;
+      }
+    }
+
+    &.orange {
+      position: relative;
+      width: 123px;
+      height: 40px;
+
+      &::before {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        width: 10px;
+        height: 10px;
+        content: '';
+        background-color: colors.$ORANGE;
+        border-radius: 5px;
+      }
+    }
+
+    &.gold {
+      position: relative;
+      width: 123px;
+      height: 40px;
+
+      &::before {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        width: 10px;
+        height: 10px;
+        content: '';
+        background-color: colors.$GOLD;
+        border-radius: 5px;
+      }
+    }
+
+    &.green {
+      position: relative;
+      width: 123px;
+      height: 40px;
+
+      &::before {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        width: 10px;
+        height: 10px;
+        content: '';
+        background-color: colors.$GREEN;
+        border-radius: 5px;
+      }
+    }
+
+    &.blue {
+      position: relative;
+      width: 123px;
+      height: 40px;
+
+      &::before {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        width: 10px;
+        height: 10px;
+        content: '';
+        background-color: colors.$BLUE;
+        border-radius: 5px;
+      }
+    }
+
+    &.purple {
+      position: relative;
+      width: 123px;
+      height: 40px;
+
+      &::before {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        width: 10px;
+        height: 10px;
+        content: '';
+        background-color: colors.$PURPLE;
+        border-radius: 5px;
+      }
+    }
+  }
+
   .menu {
     position: absolute;
     top: 40px;
     left: 0;
+    display: flex;
+    flex-direction: column;
     width: 123px;
     background-color: colors.$WHITE;
     border: 1px solid #d1d8dc;
-  }
 
-  .menuItem {
-    position: relative;
-    width: 123px;
-    height: 30px;
+    .menuItem {
+      &.red {
+        position: relative;
+        width: 123px;
+        height: 40px;
 
-    &::before {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 4px;
-      height: 4px;
-      content: '';
-      border-radius: 2px;
+        &::before {
+          position: absolute;
+          top: 15px;
+          left: 20px;
+          width: 10px;
+          height: 10px;
+          content: '';
+          background-color: colors.$RED;
+          border-radius: 5px;
+        }
+      }
+
+      &.orange {
+        position: relative;
+        width: 123px;
+        height: 40px;
+
+        &::before {
+          position: absolute;
+          top: 15px;
+          left: 20px;
+          width: 10px;
+          height: 10px;
+          content: '';
+          background-color: colors.$ORANGE;
+          border-radius: 5px;
+        }
+      }
+
+      &.gold {
+        position: relative;
+        width: 123px;
+        height: 40px;
+
+        &::before {
+          position: absolute;
+          top: 15px;
+          left: 20px;
+          width: 10px;
+          height: 10px;
+          content: '';
+          background-color: colors.$GOLD;
+          border-radius: 5px;
+        }
+      }
+
+      &.green {
+        position: relative;
+        width: 123px;
+        height: 40px;
+
+        &::before {
+          position: absolute;
+          top: 15px;
+          left: 20px;
+          width: 10px;
+          height: 10px;
+          content: '';
+          background-color: colors.$GREEN;
+          border-radius: 5px;
+        }
+      }
+
+      &.blue {
+        position: relative;
+        width: 123px;
+        height: 40px;
+
+        &::before {
+          position: absolute;
+          top: 15px;
+          left: 20px;
+          width: 10px;
+          height: 10px;
+          content: '';
+          background-color: colors.$BLUE;
+          border-radius: 5px;
+        }
+      }
+
+      &.purple {
+        position: relative;
+        width: 123px;
+        height: 40px;
+
+        &::before {
+          position: absolute;
+          top: 15px;
+          left: 20px;
+          width: 10px;
+          height: 10px;
+          content: '';
+          background-color: colors.$PURPLE;
+          border-radius: 5px;
+        }
+      }
+
+      &.black {
+        width: 123px;
+        height: 40px;
+      }
     }
   }
 }

@@ -2,7 +2,7 @@ import { MouseEvent, useRef, useState } from 'react'
 import useOnClickOutside from 'hooks/useOnClickOutside'
 import styles from './dropdown.module.scss'
 import useColorPickCallback from 'hooks/useColorPickCallback'
-import cx from 'styles'
+import { cx } from 'styles'
 
 interface DropDownProps {
   menuList: string[]
@@ -25,22 +25,38 @@ const DropDown = ({ menuList, option, currentOption, changeCurrentMenu }: DropDo
     setOpenDropdown((prev) => !prev)
   }
   const setColor = useColorPickCallback()
+
   useOnClickOutside(dropDownRef, () => setOpenDropdown(false))
 
   return (
     <div ref={dropDownRef} className={styles.wrapper}>
-      <button type='button' className={styles.menuItem} onClick={onClickOpenButton}>
+      <button
+        type='button'
+        className={cx(styles.currentMenu, styles[setColor(currentOption)])}
+        onClick={onClickOpenButton}
+      >
         {currentOption}
       </button>
       {openDropdown ? (
         <div className={styles.menu}>
           {menuList.map((data) => (
-            <button className={styles.menuItem} type='button' key={data} value={data} onClick={onClickMenuButton}>
+            <button
+              className={cx(styles.menuItem, styles[setColor(data)])}
+              type='button'
+              key={data}
+              value={data}
+              onClick={onClickMenuButton}
+            >
               {data}
             </button>
           ))}
           {option && (
-            <button className={styles.menuItem} type='button' value={option} onClick={onClickMenuButton}>
+            <button
+              className={cx(styles.menuItem, styles[setColor(option)])}
+              type='button'
+              value={option}
+              onClick={onClickMenuButton}
+            >
               {option}
             </button>
           )}
