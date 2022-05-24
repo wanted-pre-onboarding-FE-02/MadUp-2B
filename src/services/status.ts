@@ -1,4 +1,4 @@
-import { axios } from 'hooks/worker'
+import axios from 'axios'
 import { IDailyData, IReportData } from 'types/advertise'
 import { getMultiply } from 'utils/num'
 
