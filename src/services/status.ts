@@ -1,5 +1,6 @@
 import { axios } from 'hooks/worker'
 import { IDailyData, IReportData } from 'types/advertise'
+import { getMultiply } from 'utils/num'
 
 export async function getAdvertiseStatus(): Promise<IReportData> {
   // 처음 데이터 불러오기
@@ -16,7 +17,7 @@ export async function getSalesStatus(): Promise<IDailyData[]> {
   const { daily } = await getAdvertiseStatus()
   daily.forEach((item) => {
     item.roas = Math.round(item.roas)
-    item.sales = Math.round((item.roas * item.cost) / 100)
+    item.sales = Math.round(getMultiply(item.roas, item.cost, 100))
   })
   return daily
 }

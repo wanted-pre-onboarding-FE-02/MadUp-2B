@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import dayjs from 'dayjs'
-import ReactDatePicker from 'react-datepicker'
 import { DateRange, DayPicker } from 'react-day-picker'
 
 import { useRecoil } from 'hooks/state'
@@ -8,7 +7,6 @@ import { currentDataState, diffBetweenDataState } from 'recoil/atom'
 import { getCurrentData, getDiffData } from 'utils/getDiff'
 
 import styles from './status.module.scss'
-import 'react-datepicker/dist/react-datepicker.css'
 import 'react-day-picker/dist/style.css'
 
 const titleKeys = ['ROAS', '광고비', '노출 수', '클릭 수', '전환 수', '매출']
