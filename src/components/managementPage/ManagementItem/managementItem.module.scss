@@ -1,0 +1,53 @@
+@use '/src/styles/constants/colors' as color;
+
+.item {
+  width: 305px;
+  height: 420px;
+  padding: 40px 20px;
+  border: 1px solid #d1d8dc;
+  border-radius: 10px;
+
+  &__title {
+    margin-bottom: 40px;
+    font-size: 16px;
+    font-weight: 700px;
+    color: #3a474e;
+  }
+
+  &__content {
+    display: flex;
+    padding: 13px 0;
+    font-size: 12px;
+
+    & h1 {
+      width: 100px;
+      font-weight: 500;
+      color: #94a2ad;
+    }
+
+    & p {
+      font-weight: 700;
+      color: #3a474e;
+    }
+  }
+
+  .divider {
+    width: 265px;
+    height: 1px;
+    background-color: #edeff1;
+  }
+
+  &__editBtn {
+    width: 92px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #3a474e;
+    border: 1px solid #d1d8dc;
+    border-radius: 10px;
+  }
+
+  & button:last-child {
+    margin-top: 20px;
+  }
+}
