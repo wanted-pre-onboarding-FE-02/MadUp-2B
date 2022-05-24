@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
 import { useRecoilValue } from 'recoil'
-import { optionState } from 'recoil/management'
+import { optionState } from 'recoil/atom'
 
-import ManagementItem from 'components/managementPage/ManagementItem'
-import OptionBar from 'components/managementPage/OptionBar'
+import ManagementItem from 'routes/managementPage/ManagementItem'
+import OptionBar from 'routes/managementPage/OptionBar'
 
 import styles from './managementPage.module.scss'
 
