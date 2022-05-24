@@ -1,0 +1,23 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.statusWrapper {
+  .statusHeader {
+    @include flexbox.flexbox('between', 'center');
+    height: 80px;
+    padding: 25px 40px;
+
+    h1 {
+      font-size: 26px;
+      font-weight: 900;
+    }
+
+    .datePicker {
+      input {
+        min-width: 250px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+}

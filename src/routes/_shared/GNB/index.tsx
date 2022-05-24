@@ -81,7 +81,7 @@ const GNB = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to='/a' className={({ isActive }) => cx({ [styles.active]: isActive })}>
+              <NavLink to='/management' className={({ isActive }) => cx({ [styles.active]: isActive })}>
                 <ChartIcon className={styles.icon} />
                 <span>광고관리</span>
               </NavLink>

@@ -3,7 +3,7 @@ import { IDailyData, IDiffData } from 'types/advertise'
 import { getMinus, getPlus } from './num'
 
 function getSumObj(array: IDailyData[]) {
-  return array.reduce((prev, current) => {
+  const sumArr = array.reduce((prev, current) => {
     return {
       roas: getPlus(prev.roas, current.roas),
       cost: getPlus(prev.cost, current.cost),
@@ -13,6 +13,7 @@ function getSumObj(array: IDailyData[]) {
       sales: getPlus(prev.sales, current.sales),
     }
   })
+  return sumArr
 }
 
 export async function getDiffData(startDate: string, endDate: string) {
@@ -22,8 +23,13 @@ export async function getDiffData(startDate: string, endDate: string) {
   const lastIdx = daily.findIndex((data) => data.date === `${endDate}`)
   const distance = lastIdx - currentIdx
 
-  const prevArr = getSumObj(daily.slice(currentIdx - distance - 1, lastIdx - distance)) // 그 이전 날짜 범위
-  const currentArr = getSumObj(daily.slice(currentIdx, lastIdx + 1)) // 현재 날짜 범위
+  if (currentIdx - distance <= 0) return {}
+
+  const prevSliceArr = daily.slice(currentIdx - distance - 1, lastIdx - distance)
+  const currentSliceArr = daily.slice(currentIdx, lastIdx + 1)
+
+  const prevArr = getSumObj(prevSliceArr) // 그 이전 날짜 범위
+  const currentArr = getSumObj(currentSliceArr) // 현재 날짜 범위
 
   const newArr = [prevArr, currentArr]
 

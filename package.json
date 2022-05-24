@@ -30,6 +30,7 @@
     "react-i18next": ">=11.16.4"
   },
   "dependencies": {
+    "@material-ui/pickers": "^3.3.10",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
