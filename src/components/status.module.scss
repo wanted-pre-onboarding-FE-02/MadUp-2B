@@ -1,5 +1,6 @@
 @use '/src/styles/constants/colors';
 @use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/position';
 
 .statusWrapper {
   background: #f6f7f8;
@@ -23,14 +24,41 @@
       // input {
       //   width: 228px;
       // }
+      position: relative;
 
-      .picker {
-        position: absolute;
-        top: 140px;
-        right: 0;
-        background-color: #f6f7f8;
+      button {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: colors.$MAIN_FONT;
+
+        .icon {
+          margin-left: 10px;
+        }
+      }
+
+      .pickerWrap {
+        @include position.absolute(25px -7px auto auto);
+        padding: 10px;
+        background-color: colors.$WHITE;
+        border-radius: 10px;
+        box-shadow: 4px 4px 10px rgba(colors.$BLACK, 0.1);
+
+        > div > div {
+          border: none;
+
+          > div > div:first-child {
+            background-color: colors.$WHITE;
+            border-bottom: none;
+
+            > div:first-child {
+              margin-bottom: 10px;
+            }
+          }
+        }
       }
     }
+
     h3 {
       font-size: 16px;
       font-weight: 700;
