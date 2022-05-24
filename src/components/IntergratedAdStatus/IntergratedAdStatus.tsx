@@ -1,0 +1,45 @@
+import DropDown from 'components/DropDown/DropDown'
+import InterChart from 'components/InterChart/InterChart'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import {
+  dropdownFirstMenuState,
+  dropdownSecondMenuState,
+  dropdownThirdMenuState,
+  drowdownMenuListState,
+  selectDayAndWeekState,
+} from 'recoil/recoil.state'
+import styles from './intergratedAdStatus.module.scss'
+
+const IntergratedAdStatus = () => {
+  const [firstMenuState, setFirstMenuState] = useRecoilState(dropdownFirstMenuState)
+  const [secondMenuState, setSecondMenuState] = useRecoilState(dropdownSecondMenuState)
+  const [thirdMenuState, setThirdMenuState] = useRecoilState(dropdownThirdMenuState)
+  const DrowdownMenuListState = useRecoilValue(drowdownMenuListState)
+  const SelectDayAndWeekState = useRecoilValue(selectDayAndWeekState)
+
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.dropdownSelectBar}>
+        <DropDown
+          menuList={DrowdownMenuListState}
+          currentOption={firstMenuState}
+          changeCurrentMenu={setFirstMenuState}
+        />
+        <DropDown
+          menuList={DrowdownMenuListState}
+          currentOption={secondMenuState}
+          changeCurrentMenu={setSecondMenuState}
+        />
+        <DropDown
+          menuList={SelectDayAndWeekState}
+          currentOption={thirdMenuState}
+          changeCurrentMenu={setThirdMenuState}
+        />
+      </div>
+      <div className={styles.chart}>
+        <InterChart firstMenuState={firstMenuState} secondMenuState={secondMenuState} thirdMenuState={thirdMenuState} />
+      </div>
+    </div>
+  )
+}
+export default IntergratedAdStatus

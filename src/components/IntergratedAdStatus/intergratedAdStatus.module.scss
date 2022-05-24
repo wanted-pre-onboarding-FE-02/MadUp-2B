@@ -1,0 +1,24 @@
+@use '/src/styles/constants/colors';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .dropdownSelectBar {
+    display: flex;
+    align-items: center;
+    width: 960px;
+  }
+}
+
+.chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 960px;
+  height: 270px;
+  margin: 40px;
+  background-color: colors.$GRAYE;
+}

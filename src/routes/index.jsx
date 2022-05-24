@@ -1,14 +1,16 @@
-import { Route } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import styles from './routes.module.scss'
 
-import Corona from './Chart'
+import Chart from './Chart'
 
 const App = () => {
   return (
     <div className={styles.appWrapper}>
       <div className={styles.app}>
-        <Route path='corona' element={<Corona />} />
-        <Route path='*' element={<div>404</div>} />
+        <Routes>
+          <Route path='/' element={<Chart />} />
+          <Route path='*' element={<div>404</div>} />
+        </Routes>
       </div>
     </div>
   )

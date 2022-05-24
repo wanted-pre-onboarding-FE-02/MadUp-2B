@@ -1,0 +1,29 @@
+@use '/src/styles/constants/colors';
+
+.wrapper {
+  position: relative;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 123px;
+  height: 40px;
+  background-color: colors.$WHITE;
+  background-color: colors.$WHITE;
+  border: 1px solid #d1d8dc;
+  border-radius: 10px;
+
+  .menu {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 123px;
+    background-color: colors.$WHITE;
+    border: 1px solid #d1d8dc;
+
+    .menuItem {
+      width: 123px;
+      height: 30px;
+    }
+  }
+}
