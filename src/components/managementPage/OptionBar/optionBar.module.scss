@@ -1,0 +1,18 @@
+@use '/src/styles/constants/colors' as color;
+
+.option {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+
+  &__button {
+    width: 108px;
+    height: 40px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    color: color.$WHITE;
+    background-color: #586cf5;
+    border-radius: 10px;
+  }
+}
