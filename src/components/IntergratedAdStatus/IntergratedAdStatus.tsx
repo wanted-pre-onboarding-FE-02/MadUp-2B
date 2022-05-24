@@ -29,6 +29,7 @@ const IntergratedAdStatus = () => {
         />
         <DropDown
           menuList={DrowdownMenuListState}
+          option='선택사항 없음'
           currentOption={secondMenuState}
           changeCurrentMenu={setSecondMenuState}
         />
@@ -39,7 +40,7 @@ const IntergratedAdStatus = () => {
         />
       </div>
       <div className={styles.chart}>
-        <InterChart />
+        <InterChart firstMenuState={firstMenuState} secondMenuState={secondMenuState} thirdMenuState={thirdMenuState} />
       </div>
     </div>
   )

@@ -1,14 +1,17 @@
 import { MouseEvent, useRef, useState } from 'react'
-import useOnClickOutside from 'utils/useOnClickOutside'
+import useOnClickOutside from 'hooks/useOnClickOutside'
 import styles from './dropdown.module.scss'
+import useColorPickCallback from 'hooks/useColorPickCallback'
+import cx from 'styles'
 
 interface DropDownProps {
   menuList: string[]
+  option?: string
   currentOption: string
   changeCurrentMenu: (data: string) => void
 }
 
-const DropDown = ({ menuList, currentOption, changeCurrentMenu }: DropDownProps) => {
+const DropDown = ({ menuList, option, currentOption, changeCurrentMenu }: DropDownProps) => {
   const [openDropdown, setOpenDropdown] = useState(false)
   const dropDownRef = useRef<HTMLDivElement>(null)
 
@@ -21,12 +24,12 @@ const DropDown = ({ menuList, currentOption, changeCurrentMenu }: DropDownProps)
   const onClickOpenButton = () => {
     setOpenDropdown((prev) => !prev)
   }
-
+  const setColor = useColorPickCallback()
   useOnClickOutside(dropDownRef, () => setOpenDropdown(false))
 
   return (
     <div ref={dropDownRef} className={styles.wrapper}>
-      <button type='button' onClick={onClickOpenButton}>
+      <button type='button' className={styles.menuItem} onClick={onClickOpenButton}>
         {currentOption}
       </button>
       {openDropdown ? (
@@ -36,6 +39,11 @@ const DropDown = ({ menuList, currentOption, changeCurrentMenu }: DropDownProps)
               {data}
             </button>
           ))}
+          {option && (
+            <button className={styles.menuItem} type='button' value={option} onClick={onClickMenuButton}>
+              {option}
+            </button>
+          )}
         </div>
       ) : null}
     </div>

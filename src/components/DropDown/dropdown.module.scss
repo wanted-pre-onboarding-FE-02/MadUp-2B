@@ -20,10 +20,21 @@
     width: 123px;
     background-color: colors.$WHITE;
     border: 1px solid #d1d8dc;
+  }
 
-    .menuItem {
-      width: 123px;
-      height: 30px;
+  .menuItem {
+    position: relative;
+    width: 123px;
+    height: 30px;
+
+    &::before {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 4px;
+      height: 4px;
+      content: '';
+      border-radius: 2px;
     }
   }
 }
