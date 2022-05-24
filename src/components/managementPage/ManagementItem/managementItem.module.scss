@@ -4,14 +4,14 @@
   width: 305px;
   height: 420px;
   padding: 40px 20px;
-  border: 1px solid #d1d8dc;
+  border: 1px solid color.$MANAGEMENT_BORDER_COLOR;
   border-radius: 10px;
 
   &__title {
     margin-bottom: 40px;
     font-size: 16px;
     font-weight: 700px;
-    color: #3a474e;
+    color: color.$MANAGEMENT_DROPBAR_TEXT;
   }
 
   &__content {
@@ -22,19 +22,19 @@
     & h1 {
       width: 100px;
       font-weight: 500;
-      color: #94a2ad;
+      color: color.$MANAGEMENT_TEXT_PRIMARY;
     }
 
     & p {
       font-weight: 700;
-      color: #3a474e;
+      color: color.$MANAGEMENT_TEXT_SECONDARY;
     }
   }
 
   .divider {
     width: 265px;
     height: 1px;
-    background-color: #edeff1;
+    background-color: color.$MANAGEMENT_DIVIDER;
   }
 
   &__editBtn {
@@ -42,8 +42,8 @@
     height: 40px;
     font-size: 14px;
     font-weight: 700;
-    color: #3a474e;
-    border: 1px solid #d1d8dc;
+    color: color.$MANAGEMENT_TEXT_SECONDARY;
+    border: 1px solid color.$MANAGEMENT_BORDER_COLOR;
     border-radius: 10px;
   }
 
