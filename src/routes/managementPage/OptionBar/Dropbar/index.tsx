@@ -1,7 +1,7 @@
 import { useState, MouseEvent } from 'react'
 
 import { useRecoilState } from 'recoil'
-import { optionState } from 'recoil/management'
+import { optionState } from 'recoil/atom'
 
 import styles from './dropbar.module.scss'
 
