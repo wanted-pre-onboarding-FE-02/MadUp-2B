@@ -1,5 +1,3 @@
-import DropDown from 'components/DropDown/DropDown'
-import InterChart from 'components/InterChart/InterChart'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import {
   dropdownFirstMenuState,
@@ -8,6 +6,10 @@ import {
   drowdownMenuListState,
   selectDayAndWeekState,
 } from 'recoil/recoil.state'
+
+import InterChart from 'components/InterChart/InterChart'
+import DropDown from 'components/DropDown/DropDown'
+
 import styles from './intergratedAdStatus.module.scss'
 
 const IntergratedAdStatus = () => {
@@ -37,7 +39,7 @@ const IntergratedAdStatus = () => {
         />
       </div>
       <div className={styles.chart}>
-        <InterChart firstMenuState={firstMenuState} secondMenuState={secondMenuState} thirdMenuState={thirdMenuState} />
+        <InterChart />
       </div>
     </div>
   )
