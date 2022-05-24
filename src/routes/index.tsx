@@ -3,6 +3,7 @@ import GNB from 'routes/_shared/GNB'
 import Header from 'components/Header/index'
 
 import styles from './routes.module.scss'
+import { Status } from 'components/Status'
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
       <div className={styles.app}>
         <Header />
         <Routes>
-          <Route path='/' />
+          <Route path='/' element={<Status />} />
         </Routes>
       </div>
     </div>
