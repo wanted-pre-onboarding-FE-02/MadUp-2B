@@ -3,9 +3,8 @@ import GNB from 'routes/_shared/GNB'
 import Header from 'components/Header/index'
 
 import styles from './routes.module.scss'
-import ManagementPage from 'components/managementPage'
-import { Status } from 'components/Status/Status'
-// import { Status } from 'components/Status'
+import ManagementPage from 'routes/managementPage'
+import { Status } from 'routes/Status/Status'
 
 const App = () => {
   return (
