@@ -33,3 +33,7 @@ export const getMinus = (a: number, b: number) => {
 export const getMultiply = (a: number, b: number, c: number) => {
   return Num(a).multipliedBy(b).dividedBy(c).toNumber()
 }
+
+export const getMultiAndDiv = (a: number, b: number, c: number) => {
+  return Num(a).multipliedBy(b).dividedBy(c).toNumber()
+}

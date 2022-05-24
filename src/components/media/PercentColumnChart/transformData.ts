@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
+import { getMultiAndDiv, getPlus } from 'utils/num'
 
 interface IData {
   channel: string
@@ -27,7 +28,7 @@ const transformData = (MEDIA_DATA: IData[]) => {
   const funArr = [
     // categoryArr 인덱스에 대응하는 계산함수를 가지고 있습니다.
     (cur: IData) => cur.cost,
-    (cur: IData) => (cur.roas * cur.cost) / 100,
+    (cur: IData) => getMultiAndDiv(cur.roas, cur.cost, 100),
     (cur: IData) => cur.imp,
     (cur: IData) => cur.click,
     (cur: IData) => cur.convValue,
@@ -43,7 +44,7 @@ const transformData = (MEDIA_DATA: IData[]) => {
     _.chain(MEDIA_DATA)
       .filter((item) => item.channel === channel)
       .filter((item) => dayjs(item.date).isBetween(START, END, undefined, '[]'))
-      .reduce((acc, cur) => funArr.map((f, i) => acc[i] + f(cur)), [0, 0, 0, 0, 0])
+      .reduce((acc, cur) => funArr.map((f, i) => getPlus(acc[i], f(cur))), [0, 0, 0, 0, 0])
       .map((item, i) => ({ category: categoryArr[i], value: (item / total(funArr[i])) * 100 }))
       .value()
 

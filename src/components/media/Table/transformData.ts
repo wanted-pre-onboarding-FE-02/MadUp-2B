@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
+import { getMultiAndDiv, getPlus } from 'utils/num'
 
 interface IData {
   channel: string
@@ -28,11 +29,10 @@ const transformData = (MEDIA_DATA: IData[]) => {
     click: 0,
     ctr: 0,
     cpc: 0,
-    // channel: '',
   }
   const funArr = [
     (cur: IData) => cur.cost,
-    (cur: IData) => (cur.roas * cur.cost) / 100,
+    (cur: IData) => getMultiAndDiv(cur.roas, cur.cost, 100),
     (cur: IData) => cur.roas,
     (cur: IData) => cur.imp,
     (cur: IData) => cur.click,
@@ -45,7 +45,7 @@ const transformData = (MEDIA_DATA: IData[]) => {
       .filter((item) => item.channel === channel)
       .filter((item) => dayjs(item.date).isBetween(START, END, undefined, '[]'))
       .reduce((acc, cur) => {
-        const tt = funArr.map((f, i) => [acc[i][0], acc[i][1] + f(cur)]) as [string, number][]
+        const tt = funArr.map((f, i) => [acc[i][0], getPlus(acc[i][1], f(cur))]) as [string, number][]
         return tt
       }, _.cloneDeep(_.toPairs(dataStructure)))
       .map((item) => [item[0], Math.round(item[1])])
@@ -63,6 +63,7 @@ const transformData = (MEDIA_DATA: IData[]) => {
       return acc
     })
     .value()
+
   return { dataList, total }
 }
 
