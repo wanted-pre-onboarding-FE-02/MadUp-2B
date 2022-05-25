@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
 import { VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, VictoryVoronoiContainer } from 'victory'
 
@@ -51,15 +51,14 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
     return tickFormSet
   }, [])
 
-  const setDayType = useCallback((dataType: string) => {
+  const setDayType: number = useMemo(() => {
     const dayCutNum = {
-      주간: 14,
-      일별: 7,
-    }[dataType]
-    if (!dataType) return 7
-    return dayCutNum
-  }, [])
-
+      주간: 7,
+      일별: 0,
+    }[thirdMenuState]
+    if (!thirdMenuState) return 0
+    return dayCutNum as number
+  }, [thirdMenuState])
   return (
     <div className={styles.chart}>
       <VictoryChart
@@ -97,7 +96,7 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
         />
 
         <VictoryLine
-          data={firstData.slice(firstDataStartIndex, firstDataEndIndex + 1)}
+          data={firstData.slice(firstDataStartIndex, firstDataEndIndex + 1 + setDayType)}
           style={{ data: { stroke: setColor(firstMenuState) } }}
           y={(datum) => datum.y / firstMaxValue}
           animate={{
@@ -122,7 +121,7 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
           />
         )}
         <VictoryLine
-          data={secondData.slice(secondDataStartIndex, secondDataEndIndex + 1)}
+          data={secondData.slice(secondDataStartIndex, secondDataEndIndex + 1 + setDayType)}
           style={{ data: { stroke: setColor(secondMenuState) } }}
           y={(datum) => datum.y / secondMaxValue}
           animate={{
