@@ -81,7 +81,7 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
             return `${t.slice(5, 7)}월 ${t.slice(8)}일`
           }}
           style={{
-            tickLabels: { fill: 'gray', fontSize: 15 },
+            tickLabels: { fill: 'gray', fontSize: 22 },
           }}
         />
       )}
