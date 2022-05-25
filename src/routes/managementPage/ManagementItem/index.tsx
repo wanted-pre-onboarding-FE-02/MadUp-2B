@@ -10,40 +10,40 @@ const ManagementItem = ({ adType, title, budget, status, startDate, endDate, rep
       </h1>
       <div className={styles.divider} />
       <div className={styles.item__content}>
-        <h1>상태</h1>
-        <p>{status}</p>
+        <dt>상태</dt>
+        <dd>{status}</dd>
       </div>
       <div className={styles.divider} />
 
       <div className={styles.item__content}>
-        <h1>광고 생성일</h1>
-        <p>
+        <dt>광고 생성일</dt>
+        <dd>
           {startDate} {endDate && `(${endDate})`}
-        </p>
+        </dd>
       </div>
       <div className={styles.divider} />
 
       <div className={styles.item__content}>
-        <h1>일 희망 예산</h1>
-        <p>{budget}</p>
+        <dt>일 희망 예산</dt>
+        <dd>{budget}</dd>
       </div>
       <div className={styles.divider} />
 
       <div className={styles.item__content}>
-        <h1>광고 수익률</h1>
-        <p>{report.roas} %</p>
+        <dt>광고 수익률</dt>
+        <dd>{report.roas} %</dd>
       </div>
       <div className={styles.divider} />
 
       <div className={styles.item__content}>
-        <h1>매출</h1>
-        <p>{report.convValue}</p>
+        <dt>매출</dt>
+        <dd>{report.convValue}</dd>
       </div>
       <div className={styles.divider} />
 
       <div className={styles.item__content}>
-        <h1>광고 비용</h1>
-        <p>{report.cost}</p>
+        <dt>광고 비용</dt>
+        <dd>{report.cost}</dd>
       </div>
       <div className={styles.divider} />
 
