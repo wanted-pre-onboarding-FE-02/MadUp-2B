@@ -50,7 +50,23 @@ export async function getCurrentData(startDate: string, endDate: string) {
   const currentIdx = currentData.findIndex((data) => data.date === `${startDate}`)
   const lastIdx = currentData.findIndex((data) => data.date === `${endDate}`)
 
-  const currentArr = getSumObj(currentData.slice(currentIdx, lastIdx + 1)) // 현재 날짜 범위
+  const slicedData = currentData.slice(currentIdx, lastIdx + 1)
+
+  if (currentIdx === lastIdx) {
+    const testArr = slicedData.map((value) => {
+      return {
+        roas: value.roas,
+        cost: value.cost,
+        imp: value.imp,
+        click: value.click,
+        conv: value.conv,
+        sales: value.sales,
+      }
+    })
+    return testArr[0]
+  }
+
+  const currentArr = getSumObj(slicedData) // 현재 날짜 범위
 
   return currentArr
 }

@@ -1,5 +1,5 @@
 import Media from './Media'
-import { Status } from './Status/Status'
+import { Status } from './Status'
 
 const DashboardPage = () => {
   return (

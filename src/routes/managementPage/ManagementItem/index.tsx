@@ -1,4 +1,4 @@
-import { IDataSet } from 'type/adListDataSet'
+import { IDataSet } from 'types/adListDataSet'
 
 import styles from './managementItem.module.scss'
 
