@@ -19,13 +19,13 @@
     padding: 13px 0;
     font-size: 12px;
 
-    & h1 {
+    & dt {
       width: 100px;
       font-weight: 500;
       color: color.$MANAGEMENT_TEXT_PRIMARY;
     }
 
-    & p {
+    & dd {
       font-weight: 700;
       color: color.$MANAGEMENT_TEXT_SECONDARY;
     }
