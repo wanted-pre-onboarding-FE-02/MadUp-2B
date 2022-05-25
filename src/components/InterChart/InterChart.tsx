@@ -54,13 +54,6 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
         width={960}
         height={320}
         domain={{ y: [0, 1] }}
-        // containerComponent={
-        //   <VictoryVoronoiContainer
-        //     voronoiDimension='x'
-        //     labels={({ datum }) => `${Math.round(datum.y)}`}
-        //     labelComponent={<VictoryTooltip cornerRadius={5} flyoutStyle={{ fill: 'white' }} />}
-        //   />
-        // }
         containerComponent={
           <VictoryVoronoiContainer voronoiBlacklist={['redPoints']} labels={({ datum }) => `${datum.y.toFixed(1)}`} />
         }
@@ -90,6 +83,7 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
           style={{ data: { stroke: setColor(firstMenuState) } }}
           y={(datum) => datum.y / firstMaxValue}
         />
+
         {!!secondData.length && (
           <VictoryAxis
             dependentAxis

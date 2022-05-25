@@ -17,14 +17,14 @@
       height: 40px;
     }
   }
-}
 
-.chart {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1060px;
-  height: 270px;
-  margin: 40px;
-  background-color: colors.$WHITE;
+  .chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1060px;
+    height: 270px;
+    margin: 40px;
+    background-color: colors.$WHITE;
+  }
 }

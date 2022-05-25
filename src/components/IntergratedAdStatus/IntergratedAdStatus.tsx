@@ -27,6 +27,7 @@ const IntergratedAdStatus = () => {
           currentOption={firstMenuState}
           changeCurrentMenu={setFirstMenuState}
         />
+
         <DropDown
           menuList={DrowdownMenuListState}
           option='선택사항 없음'
@@ -34,6 +35,7 @@ const IntergratedAdStatus = () => {
           changeCurrentMenu={setSecondMenuState}
         />
         <div className={styles.justpadding} />
+
         <DropDown
           menuList={SelectDayAndWeekState}
           currentOption={thirdMenuState}
