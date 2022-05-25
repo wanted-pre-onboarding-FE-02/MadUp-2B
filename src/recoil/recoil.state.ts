@@ -1,7 +1,7 @@
 import { atom, selector } from 'recoil'
 
 import { Data, convertData } from '../utils/convertData.util'
-import TRENDDATASET from '../routes/dashboardPage/Status/IntergratedAdStatus/InterChart/trendDataSet.json'
+import TRENDDATASET from 'routes/dashboardPage/Status/IntergratedAdStatus/InterChart/trendDataSet.json'
 
 const drowdownMenuList = ['ROAS', '광고비', '노출수', '클릭수', '전환수', '매출']
 const selectDayAndWeek = ['주간', '일별']

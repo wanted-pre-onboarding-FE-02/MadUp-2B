@@ -12,7 +12,7 @@
     align-content: center;
     justify-content: space-around;
     width: 100%;
-    padding: 0 40px;
+    padding: 0 30px;
 
     .justpadding {
       width: 100%;
@@ -22,11 +22,6 @@
 
   .chart {
     display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // min-width: 800px;
-    // height: 100%;
-    margin: 40px;
     background-color: colors.$WHITE;
   }
 }

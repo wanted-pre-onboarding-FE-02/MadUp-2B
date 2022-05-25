@@ -33,6 +33,7 @@ const DashBoardHeader = () => {
     const translatedEnd = end && dayjs(end).format('YYYY-MM-DD')
     setStartDate(translatedStart)
     setEndDate(translatedEnd)
+
     if (start && end) {
       setIsVisible((prev) => !prev)
     }
