@@ -1,10 +1,10 @@
-import styles from './header.module.scss'
+import styles from './profile.module.scss'
 
 import { AlertIcon, SettingIcon, UserIcon } from 'assets/svgs/index'
 
-const Header = () => {
+const Profile = () => {
   return (
-    <header className={styles.wrap}>
+    <div className={styles.wrap}>
       <ul>
         <li>
           <button type='button' className={styles.alertWrap}>
@@ -25,8 +25,8 @@ const Header = () => {
           </button>
         </li>
       </ul>
-    </header>
+    </div>
   )
 }
 
-export default Header
+export default Profile

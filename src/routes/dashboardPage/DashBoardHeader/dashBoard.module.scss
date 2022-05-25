@@ -20,7 +20,7 @@
       display: flex;
       align-items: center;
       font-size: 14px;
-      color: colors.$MAIN_FONT;
+      color: colors.$GRAY_A;
 
       .icon {
         margin-left: 10px;
@@ -29,6 +29,7 @@
 
     .pickerWrap {
       @include position.absolute(25px -7px auto auto);
+      z-index: 1001;
       padding: 10px;
       background-color: colors.$WHITE;
       border-radius: 10px;

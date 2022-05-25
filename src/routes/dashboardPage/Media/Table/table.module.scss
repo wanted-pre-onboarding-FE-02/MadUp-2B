@@ -9,11 +9,11 @@
   }
 
   &::-webkit-scrollbar-track {
-    background-color: colors.$GRAYE;
+    background-color: colors.$GRAY_E;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: colors.$GRAYA;
+    background-color: colors.$GRAY_A;
     border-radius: 10px;
   }
 
@@ -22,12 +22,12 @@
   }
 
   th {
-    border-top: 1px solid colors.$GRAYA;
-    border-bottom: 1px solid colors.$GRAYA;
+    border-top: 1px solid colors.$GRAY_A;
+    border-bottom: 1px solid colors.$GRAY_A;
   }
 
   td {
-    border-bottom: 1px solid colors.$GRAYA;
+    border-bottom: 1px solid colors.$GRAY_A;
   }
 
   th,

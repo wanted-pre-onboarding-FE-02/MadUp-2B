@@ -7,7 +7,6 @@ import ManagementList from './ManagementList'
 import styles from './managementPage.module.scss'
 
 const ManagementPage = () => {
-  // const [data, setData] = useState(getConvertedData())
   const [option, setOption] = useState('전체 광고')
 
   const handleOption = (selectedOption: string) => {

@@ -2,11 +2,10 @@ import { useCallback, useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
 import { VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, VictoryVoronoiContainer } from 'victory'
 
-import { firstCurrentData, secondCurrentData } from 'recoil/recoil.state'
+import { pickedEndDateState, pickedStartDateState } from 'recoil/dateAtom'
+import { firstCurrentData, secondCurrentData } from 'recoil/adChartAtom'
 import { Data } from 'utils/convertData.util'
 import useColorPickCallback from 'hooks/useColorPickCallback'
-
-import { pickedEndDateState, pickedStartDateState } from 'recoil/atom'
 
 interface InterChartProps {
   firstMenuState: string

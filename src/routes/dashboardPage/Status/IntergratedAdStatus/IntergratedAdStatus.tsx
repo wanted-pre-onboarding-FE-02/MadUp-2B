@@ -5,7 +5,7 @@ import {
   dropdownThirdMenuState,
   drowdownMenuListState,
   selectDayAndWeekState,
-} from 'recoil/recoil.state'
+} from 'recoil/adChartAtom'
 
 import InterChart from 'routes/dashboardPage/Status/IntergratedAdStatus/InterChart/InterChart'
 import DropDown from 'routes/dashboardPage/Status/IntergratedAdStatus/DropDown/DropDown'
