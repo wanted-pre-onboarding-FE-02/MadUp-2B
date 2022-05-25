@@ -59,6 +59,7 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
     if (!thirdMenuState) return 0
     return dayCutNum as number
   }, [thirdMenuState])
+
   return (
     <div className={styles.chart}>
       <VictoryChart
@@ -72,7 +73,14 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
       >
         {endDay && (
           <VictoryAxis
-            tickFormat={(t) => {
+            scale='time'
+            tickFormat={(t, i) => {
+              if (firstDataEndIndex - firstDataStartIndex > 14) {
+                if (!(i % 7)) {
+                  return `${t.slice(5, 7)}월 ${t.slice(8)}일`
+                }
+                return ''
+              }
               return `${t.slice(5, 7)}월 ${t.slice(8)}일`
             }}
             style={{
