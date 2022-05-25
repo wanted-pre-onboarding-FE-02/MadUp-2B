@@ -93,7 +93,7 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
               axis: { strokeWidth: 0 },
               grid: { stroke: 'gray', strokeWidth: 1 },
               ticks: { padding: 0 },
-              tickLabels: { fill: 'gray', textAnchor: 'start' },
+              tickLabels: { fill: 'gray', textAnchor: 'start', padding: 0 },
             }}
             tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
             tickFormat={(t) => `${setUnit(secondMenuState, t * secondMaxValue)}`}
