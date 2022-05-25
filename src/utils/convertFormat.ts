@@ -1,42 +1,55 @@
-import { getConvertedCurrnecy } from './convertCurrencyFormat'
+import { getDivide } from './num'
 
-// export const convertFormat = (value: number | string | undefined, keyword: string) => {
-//   switch (keyword) {
-//     case 'roas':
-//       console.log(`${value}%`)
-//       break
-//     case 'cost':
-//       console.log(getConvertedCurrnecy(value))
-//       break
-//     // case 'imp':
-//     // case 'click':
-//     // case 'conv':
-//     // case 'sales':
-//     // default:
-//     default:
-//       console.log('hello')
-//   }
-//   // let 만원: number
-//   // let 천원: number
-//   // if (koreanWon / 100000 > 0) {
-//   //   만원 = (koreanWon - (koreanWon % 10000)) / 10000
-//   //   천원 = ((koreanWon % 10000) - ((koreanWon % 10000) % 1000)) / 1000
-//   //   if (천원 === 0) return `${만원}만원`
-//   //   return `${만원}만 ${천원}천원`
-//   // }
-//   // 천원 = (koreanWon - (koreanWon % 1000)) / 1000
-//   // return `${천원}천원`
-// }
+export const convertFormat = (value: number | string | undefined, keyword: string) => {
+  let transformedValue: number | string = ''
 
-// const convertCurrency = () => {
-//   let 만원: number
-//   let 천원: number
-//   if (koreanWon / 100000 > 0) {
-//     만원 = (koreanWon - (koreanWon % 10000)) / 10000
-//     천원 = ((koreanWon % 10000) - ((koreanWon % 10000) % 1000)) / 1000
-//     if (천원 === 0) return `${만원}만원`
-//     return `${만원}만 ${천원}천원`
-//   }
-//   천원 = (koreanWon - (koreanWon % 1000)) / 1000
-//   return `${천원}천원`
-// }
+  const newValue = Math.abs(Number(value))
+  if (isNaN(newValue)) return undefined
+
+  switch (keyword) {
+    case 'roas':
+      transformedValue = `${newValue?.toLocaleString()}%`
+      break
+    case 'cost':
+      transformedValue = `${convertView(newValue)}원`
+      break
+    case 'imp':
+      transformedValue = `${convertView(newValue)}회`
+      break
+    case 'click':
+      transformedValue = `${convertView(newValue)}회`
+      break
+    case 'conv':
+      transformedValue = `${convertView(newValue)}회`
+      break
+    case 'sales':
+      transformedValue = `${convertView(newValue)}원`
+      break
+    default:
+      return undefined
+  }
+  return transformedValue
+}
+
+const convertView = (view: number | string | undefined) => {
+  let answer: string | number | undefined = ''
+  const unit = 10000
+  let index = 0
+  let division = unit ** index
+
+  if (getDivide(Number(view), 10000) <= 1) {
+    answer = view?.toLocaleString()
+    return answer
+  }
+
+  while (Math.floor(getDivide(Number(view), division)) > 0) {
+    if (index >= 2) {
+      answer = `${getDivide(Number(view), division).toFixed(0).toLocaleString()}억`
+      return answer
+    }
+
+    answer = `${getDivide(Number(view), 10000).toFixed(0).toLocaleString()}만`
+    division = unit ** (index += 1)
+  }
+  return answer
+}

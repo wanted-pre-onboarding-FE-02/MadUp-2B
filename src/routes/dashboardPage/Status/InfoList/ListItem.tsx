@@ -3,6 +3,7 @@ import { useRecoilValue } from 'recoil'
 import { diffBetweenDataState } from 'recoil/atom'
 import { TITLE_KEYS } from 'recoil/statusValue'
 import { cx } from 'styles'
+import { convertFormat } from 'utils/convertFormat'
 
 import styles from './listItem.module.scss'
 
@@ -21,7 +22,7 @@ export const ListItem = ({ index, keyword, value }: IProps) => {
     <li className={styles.listItem}>
       <dl>
         <dt>{TITLE_KEYS[index]}</dt>
-        <dd>{value?.toLocaleString()}</dd>
+        <dd>{convertFormat(value, keyword)}</dd>
       </dl>
       <dl>
         <dt className={styles.isNotVisible}>diff</dt>
@@ -30,8 +31,7 @@ export const ListItem = ({ index, keyword, value }: IProps) => {
             {isUp ? <UpIcon /> : <DownIcon />}
           </span>
           <span className={styles.isNothing}>{!diffData[keyword] && '―'}</span>
-          {notEmptyDiffData?.toLocaleString()}
-          {/* {convertFormat(notEmptyDiffData, keyword)} */}
+          {diffData && convertFormat(diffData[keyword], keyword)}
         </dd>
       </dl>
     </li>
