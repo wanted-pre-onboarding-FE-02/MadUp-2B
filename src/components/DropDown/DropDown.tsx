@@ -37,7 +37,7 @@ const DropDown = ({ menuList, option, currentOption, changeCurrentMenu }: DropDo
         onClick={onClickOpenButton}
       >
         {currentOption}
-        <ArrowIcon />
+        <ArrowIcon className={styles.icon} />
       </button>
       {openDropdown ? (
         <div className={styles.menu}>
