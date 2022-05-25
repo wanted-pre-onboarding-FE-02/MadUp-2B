@@ -1,10 +1,12 @@
-import { useRecoil } from 'hooks/state'
 import { useQuery } from 'react-query'
-import { pickedEndDateState, pickedStartDateState } from 'recoil/atom'
+
+import { useRecoil } from 'hooks/state'
+import { pickedEndDateState, pickedStartDateState } from 'recoil/dateAtom'
 import { getTrendDataApi } from 'services/fakeApi'
 import { getCurrentData, getDiffData, getTransformedData } from './getTransformedData'
-import styles from './infoList.module.scss'
+
 import ListItem from './ListItem'
+import styles from './infoList.module.scss'
 
 const InfoList = () => {
   const [startDate] = useRecoil(pickedStartDateState)

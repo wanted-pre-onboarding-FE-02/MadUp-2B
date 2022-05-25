@@ -1,5 +1,6 @@
-import Loading from 'components/Loading'
 import { Suspense } from 'react'
+
+import Loading from 'components/Loading'
 import ContentBox from '../_shared/ContentBox'
 import PercentColumnChart from './PercentColumnChart'
 import Table from './Table'

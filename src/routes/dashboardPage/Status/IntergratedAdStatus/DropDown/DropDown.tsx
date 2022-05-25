@@ -1,9 +1,11 @@
 import { MouseEvent, useRef, useState } from 'react'
-import useOnClickOutside from 'hooks/useOnClickOutside'
-import styles from './dropdown.module.scss'
-import useColorPickCallback from 'hooks/useColorPickCallback'
 import { cx } from 'styles'
+
+import useOnClickOutside from 'hooks/useOnClickOutside'
+import useColorPickCallback from 'hooks/useColorPickCallback'
+
 import { ArrowIcon } from 'assets/svgs'
+import styles from './dropdown.module.scss'
 
 interface DropDownProps {
   menuList: string[]

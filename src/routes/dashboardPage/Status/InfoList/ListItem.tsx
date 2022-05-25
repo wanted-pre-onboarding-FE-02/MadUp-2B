@@ -1,11 +1,18 @@
-import { DownIcon, UpIcon } from 'assets/svgs'
-import { TITLE_KEYS } from 'recoil/statusValue'
 import { cx } from 'styles'
-import { ITrend2DataSet } from 'types/trendDataSet'
+import { ITrend2DataSet, ITitleDataSet } from 'types/trendDataSet'
 import { convertFormat } from 'utils/convertFormat'
+import { DownIcon, UpIcon } from 'assets/svgs'
 
 import styles from './listItem.module.scss'
 
+const TITLE_KEYS: ITitleDataSet = {
+  imp: '노출 수',
+  roas: 'ROAS',
+  click: '클릭 수',
+  cost: '광고비',
+  conv: '전환 수',
+  sales: '매출',
+}
 interface IProps {
   keyword: string
   currData: ITrend2DataSet | undefined
