@@ -1,6 +1,6 @@
 import { cx } from 'styles'
 import { ITrend2DataSet, ITitleDataSet } from 'types/trendDataSet'
-import { convertFormat } from 'utils/convertFormat'
+import { convertTrendFormat } from 'utils/convertTrendFormat'
 import { DownIcon, UpIcon } from 'assets/svgs'
 
 import styles from './listItem.module.scss'
@@ -13,6 +13,7 @@ const TITLE_KEYS: ITitleDataSet = {
   conv: '전환 수',
   sales: '매출',
 }
+
 interface IProps {
   keyword: string
   currData: ITrend2DataSet | undefined
@@ -28,7 +29,7 @@ const ListItem = ({ keyword, currData, diffData }: IProps) => {
     <li className={styles.listItem}>
       <dl>
         <dt>{TITLE_KEYS[keyword]}</dt>
-        <dd>{convertFormat(currValue, keyword)}</dd>
+        <dd>{convertTrendFormat(currValue, keyword)}</dd>
       </dl>
       <dl>
         <dt className={styles.isNotVisible}>diff</dt>
@@ -37,7 +38,7 @@ const ListItem = ({ keyword, currData, diffData }: IProps) => {
             {isUp ? <UpIcon /> : <DownIcon />}
           </span>
           <span className={styles.isNothing}>{!diffValue && '―'}</span>
-          {convertFormat(diffValue, keyword)}
+          {convertTrendFormat(diffValue, keyword)}
         </dd>
       </dl>
     </li>
