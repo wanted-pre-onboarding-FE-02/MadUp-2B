@@ -4,7 +4,7 @@
   position: relative;
   font-size: 14px;
   font-weight: 500;
-  color: color.$MANAGEMENT_DROPBAR_TEXT;
+  color: color.$GRAY_A;
 
   &__btn {
     display: flex;
@@ -16,7 +16,7 @@
     font-size: inherit;
     font-weight: inherit;
     color: inherit;
-    border: 1px solid color.$MANAGEMENT_BORDER_COLOR;
+    border: 1px solid color.$GRAY_C;
     border-radius: 10px;
 
     & .icon {
@@ -31,7 +31,7 @@
     width: 123px;
     padding: 7px 20px;
     background-color: color.$WHITE;
-    border: 1px solid color.$MANAGEMENT_BORDER_COLOR;
+    border: 1px solid color.$GRAY_C;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, $alpha: 0.04);
 
