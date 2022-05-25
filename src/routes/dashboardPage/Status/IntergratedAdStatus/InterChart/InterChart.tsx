@@ -26,6 +26,18 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
   }, [])
   const firstMaxValue = maxValue(firstData)
   const secondMaxValue = maxValue(secondData)
+
+  const findDayIndex = (dataSet: Data[], targetDay: string | null) => {
+    if (!targetDay) return dataSet.length
+    return dataSet.findIndex((data) => data.x === targetDay)
+  }
+  const firstDataStartIndex = findDayIndex(firstData, startDay)
+  const firstDataEndIndex = findDayIndex(firstData, endDay)
+  const secondDataStartIndex = findDayIndex(secondData, startDay)
+  const secondDataEndIndex = findDayIndex(secondData, endDay)
+
+  const setColor = useColorPickCallback()
+
   const setUnit = useCallback((menuState: string, tickData: number) => {
     const tickFormSet = {
       ROAS: `${Math.round(tickData)}%`,
@@ -38,17 +50,6 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
     if (!menuState) return ''
     return tickFormSet
   }, [])
-
-  const findDayIndex = (dataSet: Data[], targetDay: string | null) => {
-    if (!targetDay) return -1
-    return dataSet.findIndex((data) => data.x === targetDay)
-  }
-  const firstDataStartIndex = findDayIndex(firstData, startDay)
-  const firstDataEndIndex = findDayIndex(firstData, endDay)
-  const secondDataStartIndex = findDayIndex(secondData, startDay)
-  const secondDataEndIndex = findDayIndex(secondData, endDay)
-
-  const setColor = useColorPickCallback()
 
   const setDayType = useCallback((dataType: string) => {
     const dayCutNum = {
@@ -70,12 +71,16 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
           <VictoryVoronoiContainer voronoiBlacklist={['redPoints']} labels={({ datum }) => `${datum.y.toFixed(1)}`} />
         }
       >
-        <VictoryAxis
-          tickFormat={(t) => `${t.slice(5, 7)}월 ${t.slice(8)}일`}
-          style={{
-            tickLabels: { fill: 'gray', fontSize: 12 },
-          }}
-        />
+        {endDay && (
+          <VictoryAxis
+            tickFormat={(t) => {
+              return `${t.slice(5, 7)}월 ${t.slice(8)}일`
+            }}
+            style={{
+              tickLabels: { fill: 'gray', fontSize: 12 },
+            }}
+          />
+        )}
 
         <VictoryAxis
           dependentAxis
@@ -84,16 +89,21 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
           style={{
             axis: { strokeWidth: 0 },
             grid: { stroke: 'gray', strokeWidth: 1 },
-            ticks: { padding: 0 },
+            ticks: { padding: -15 },
             tickLabels: { fill: 'gray', textAnchor: 'end' },
           }}
           tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
           tickFormat={(t) => `${setUnit(firstMenuState, t * firstMaxValue)}`}
         />
+
         <VictoryLine
-          data={firstData.slice(firstDataStartIndex, firstDataEndIndex)}
+          data={firstData.slice(firstDataStartIndex, firstDataEndIndex + 1)}
           style={{ data: { stroke: setColor(firstMenuState) } }}
           y={(datum) => datum.y / firstMaxValue}
+          animate={{
+            duration: 500,
+            onLoad: { duration: 500 },
+          }}
         />
 
         {!!secondData.length && (
@@ -112,9 +122,13 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
           />
         )}
         <VictoryLine
-          data={secondData.slice(secondDataStartIndex, secondDataEndIndex)}
+          data={secondData.slice(secondDataStartIndex, secondDataEndIndex + 1)}
           style={{ data: { stroke: setColor(secondMenuState) } }}
           y={(datum) => datum.y / secondMaxValue}
+          animate={{
+            duration: 500,
+            onLoad: { duration: 500 },
+          }}
         />
       </VictoryChart>
     </div>
