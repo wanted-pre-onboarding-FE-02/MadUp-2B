@@ -1,7 +1,7 @@
 @use '/src/styles/constants/colors' as color;
 
 .management {
-  background-color: color.$MANAGEMENT_BACKGROUND;
+  background-color: color.$GRAY_D;
 
   &__title {
     width: 1120px;
@@ -10,7 +10,7 @@
     font-size: 26px;
     font-weight: 900;
     line-height: 30px;
-    color: color.$MANAGEMENT_TITLE;
+    color: color.$GRAY_A;
     letter-spacing: 0.3px;
   }
 

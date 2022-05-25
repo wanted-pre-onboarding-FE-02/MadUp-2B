@@ -6,7 +6,7 @@
   width: 100%;
   height: 60px;
   padding-bottom: 20px;
-  border-bottom: 1px solid colors.$BACK_ACTIVE;
+  border-bottom: 1px solid colors.$GRAY_E;
 
   ul {
     display: flex;
@@ -27,7 +27,7 @@
         width: 5px;
         height: 5px;
         content: '';
-        background-color: colors.$DOT;
+        background-color: colors.$RED_B;
         border-radius: 50%;
       }
 
@@ -43,14 +43,14 @@
         .userIconWrap {
           width: 40px;
           height: 40px;
-          background-color: colors.$BACK_ACTIVE;
-          border: 1px solid colors.$BORDER;
+          background-color: colors.$GRAY_E;
+          border: 1px solid colors.$GRAY_C;
           border-radius: 50%;
 
           .userIcon {
             width: 16px;
             margin-top: 7px;
-            fill: colors.$BORDER;
+            fill: colors.$GRAY_C;
           }
         }
 
@@ -58,7 +58,7 @@
           margin-left: 10px;
           font-size: 14px;
           font-weight: 500;
-          color: colors.$MAIN_FONT;
+          color: colors.$GRAY_A;
         }
       }
     }
