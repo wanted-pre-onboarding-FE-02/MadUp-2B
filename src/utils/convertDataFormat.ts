@@ -1,11 +1,11 @@
-import DATA from '../data/wanted_FE_ad-list-data-set.json'
+import { IAdData } from 'services/fakeApi'
 
 import { getConvertedCurrnecy } from './convertCurrencyFormat'
 
-export const getConvertedData = () => {
+export const getConvertedData = (AD_DATA: IAdData) => {
   return {
-    count: DATA.count,
-    ads: DATA.ads.map((ad) => {
+    count: AD_DATA.count,
+    ads: AD_DATA.ads.map((ad) => {
       const converedAdType = ad.adType === 'web' ? '웹광고' : '앱광고'
       const convertedStatus = ad.status === 'active' ? '진행중' : '중단됨'
 

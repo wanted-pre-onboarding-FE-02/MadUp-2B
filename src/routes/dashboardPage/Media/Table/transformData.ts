@@ -42,9 +42,7 @@ const transformData = (MEDIA_DATA: IMediaData[], startDate: string, endDate: str
 
   const total = _.chain(_.cloneDeep(dataList))
     .reduce((acc, cur) => {
-      for (const key in cur) {
-        if (Object.prototype.hasOwnProperty.call(cur, key)) acc[key] += cur[key]
-      }
+      for (const key in cur) if (Object.prototype.hasOwnProperty.call(cur, key)) acc[key] += cur[key]
       return acc
     })
     .value()

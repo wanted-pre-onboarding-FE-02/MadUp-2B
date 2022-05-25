@@ -1,22 +1,23 @@
 import { useState, MouseEvent } from 'react'
 
-import { useRecoilState } from 'recoil'
-import { optionState } from 'recoil/atom'
-
 import styles from './dropbar.module.scss'
 
 import { ArrowIcon } from 'assets/svgs'
 
-const Dropbar = () => {
+interface Prop {
+  setSelectOption: (option: string) => void
+  selectedOption: string
+}
+
+const Dropbar = ({ setSelectOption, selectedOption }: Prop) => {
   const [isDropbarClicked, setIsDropbarClicked] = useState(false)
-  const [selectedOption, setSelectedOption] = useRecoilState(optionState)
 
   const handleDropbar = () => {
     setIsDropbarClicked((prev) => !prev)
   }
 
   const handleOption = (e: MouseEvent<HTMLButtonElement>) => {
-    setSelectedOption(e.currentTarget.innerText)
+    setSelectOption(e.currentTarget.innerText)
     setIsDropbarClicked(false)
   }
 

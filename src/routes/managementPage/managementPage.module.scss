@@ -22,11 +22,5 @@
     background-color: color.$WHITE;
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, $alpha: 0.04);
-
-    & .content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
   }
 }

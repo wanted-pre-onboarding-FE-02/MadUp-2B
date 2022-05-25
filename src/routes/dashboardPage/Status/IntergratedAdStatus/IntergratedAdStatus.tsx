@@ -8,7 +8,7 @@ import {
 } from 'recoil/recoil.state'
 
 import InterChart from 'routes/dashboardPage/Status/IntergratedAdStatus/InterChart/InterChart'
-import DropDown from 'components/DropDown/DropDown'
+import DropDown from 'routes/dashboardPage/Status/IntergratedAdStatus/DropDown/DropDown'
 
 import styles from './intergratedAdStatus.module.scss'
 
@@ -30,7 +30,7 @@ const IntergratedAdStatus = () => {
 
         <DropDown
           menuList={DrowdownMenuListState}
-          option='선택사항 없음'
+          option='선택 안함'
           currentOption={secondMenuState}
           changeCurrentMenu={setSecondMenuState}
         />
