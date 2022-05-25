@@ -24,7 +24,6 @@ const InfoList = () => {
     {
       enabled: !!endDate && !!startDate,
       suspense: true,
-      // keepPreviousData: true,
       refetchOnMount: false,
       refetchOnWindowFocus: false,
     }
