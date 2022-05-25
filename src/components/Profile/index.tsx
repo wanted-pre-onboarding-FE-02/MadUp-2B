@@ -4,7 +4,7 @@ import { AlertIcon, SettingIcon, UserIcon } from 'assets/svgs/index'
 
 const Profile = () => {
   return (
-    <header className={styles.wrap}>
+    <div className={styles.wrap}>
       <ul>
         <li>
           <button type='button' className={styles.alertWrap}>
@@ -25,7 +25,7 @@ const Profile = () => {
           </button>
         </li>
       </ul>
-    </header>
+    </div>
   )
 }
 
