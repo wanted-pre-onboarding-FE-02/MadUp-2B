@@ -1,16 +1,16 @@
 import { Suspense } from 'react'
-import styles from './media.module.scss'
+import ContentBox from '../_shared/ContentBox'
 import PercentColumnChart from './PercentColumnChart'
 import Table from './Table'
 
 const Media = () => {
   return (
-    <div className={styles.wrapper}>
+    <ContentBox title='매체 현황'>
       <Suspense fallback={<div>로딩중...</div>}>
         <PercentColumnChart />
         <Table />
       </Suspense>
-    </div>
+    </ContentBox>
   )
 }
 export default Media

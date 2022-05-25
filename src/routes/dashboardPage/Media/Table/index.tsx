@@ -21,7 +21,7 @@ const Table = () => {
       <table>
         <thead>
           <tr>
-            <th> </th>
+            <th className={styles.first}> </th>
             <th>광고비</th>
             <th>매출</th>
             <th>ROAS</th>

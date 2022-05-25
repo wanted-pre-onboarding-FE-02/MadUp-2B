@@ -1,0 +1,19 @@
+@use '/src/styles/mixins/flexbox';
+
+ul.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+
+  li {
+    @include flexbox.flexbox('center', 'center');
+    margin-left: 20px;
+
+    .symbol {
+      width: 15px;
+      height: 15px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  }
+}
