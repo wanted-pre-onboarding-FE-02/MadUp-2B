@@ -1,23 +1,10 @@
 import MEDIA_DATA from 'assets/json/MEDIA_DATA.json'
 import AD_DATA from 'assets/json/AD_DATA.json'
 import TREND_DATA from 'assets/json/TREND_DATA.json'
-
-interface IData {
-  channel: string
-  date: string
-  imp: number
-  click: number
-  cost: number
-  convValue: number
-  ctr: number
-  cvr: number
-  cpc: number
-  cpa: number
-  roas: number
-}
+import { IMediaData } from 'types/media.d'
 
 const DELAY_TIME = 2000
-export const getMediaDataApi = (): Promise<IData[]> =>
+export const getMediaDataApi = (): Promise<IMediaData[]> =>
   new Promise((resolve) => {
     setTimeout(() => {
       resolve(MEDIA_DATA)

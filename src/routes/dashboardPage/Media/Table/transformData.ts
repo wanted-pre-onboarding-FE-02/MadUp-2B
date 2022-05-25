@@ -2,25 +2,10 @@ import _ from 'lodash'
 import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
 import { getMultiAndDiv, getPlus } from 'utils/num'
+import { IMediaData } from 'types/media'
 
-interface IData {
-  channel: string
-  date: string
-  imp: number
-  click: number
-  cost: number
-  convValue: number
-  ctr: number
-  cvr: number
-  cpc: number
-  cpa: number
-  roas: number
-}
-
-const transformData = (MEDIA_DATA: IData[]) => {
+const transformData = (MEDIA_DATA: IMediaData[], startDate: string, endDate: string | null) => {
   dayjs.extend(isBetween)
-  const START = '2022-02-09'
-  const END = '2022-02-14'
   const dataStructure = {
     cost: 0,
     sales: 0,
@@ -31,19 +16,19 @@ const transformData = (MEDIA_DATA: IData[]) => {
     cpc: 0,
   }
   const funArr = [
-    (cur: IData) => cur.cost,
-    (cur: IData) => getMultiAndDiv(cur.roas, cur.cost, 100),
-    (cur: IData) => cur.roas,
-    (cur: IData) => cur.imp,
-    (cur: IData) => cur.click,
-    (cur: IData) => cur.ctr,
-    (cur: IData) => cur.cpc,
+    (cur: IMediaData) => cur.cost,
+    (cur: IMediaData) => getMultiAndDiv(cur.roas, cur.cost, 100),
+    (cur: IMediaData) => cur.roas,
+    (cur: IMediaData) => cur.imp,
+    (cur: IMediaData) => cur.click,
+    (cur: IMediaData) => cur.ctr,
+    (cur: IMediaData) => cur.cpc,
   ]
 
   const mediaData = (channel: string) =>
     _.chain(MEDIA_DATA)
       .filter((item) => item.channel === channel)
-      .filter((item) => dayjs(item.date).isBetween(START, END, undefined, '[]'))
+      .filter((item) => dayjs(item.date).isBetween(startDate, endDate, undefined, '[]'))
       .reduce((acc, cur) => {
         const tt = funArr.map((f, i) => [acc[i][0], getPlus(acc[i][1], f(cur))]) as [string, number][]
         return tt
