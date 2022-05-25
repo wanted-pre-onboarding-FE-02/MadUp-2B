@@ -24,7 +24,7 @@ const GNB = () => {
   useOnClickOutside(dropdownRef, () => setDropdownClick(false))
 
   return (
-    <nav className={styles.gnb}>
+    <aside className={styles.gnb}>
       <div className={styles.top}>
         <h1>
           <Link to='/'>
@@ -52,7 +52,7 @@ const GNB = () => {
             <ArrowIcon className={styles.arrowIcon} />
           </div>
         </div>
-        <div className={styles.adWrap}>
+        <nav className={styles.adWrap}>
           <p className={styles.subTitle}>광고 센터</p>
           <ul className={styles.navWrap}>
             <li>
@@ -68,7 +68,7 @@ const GNB = () => {
               </NavLink>
             </li>
           </ul>
-        </div>
+        </nav>
       </div>
       <div className={styles.bottom}>
         <button type='button' className={styles.guideWrap}>
@@ -85,7 +85,7 @@ const GNB = () => {
           <a href='/'>이용약관</a>
         </div>
       </div>
-    </nav>
+    </aside>
   )
 }
 

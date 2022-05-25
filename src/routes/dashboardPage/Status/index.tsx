@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+
 import Loading from 'components/Loading'
 import ContentBox from '../_shared/ContentBox'
 import InfoList from './InfoList'

@@ -3,13 +3,15 @@ import DatePicker, { registerLocale } from 'react-datepicker'
 import ko from 'date-fns/locale/ko'
 import dayjs from 'dayjs'
 
-import { pickedEndDateState, pickedStartDateState } from 'recoil/atom'
-import { FIRST_DATE, LAST_DATE } from 'recoil/statusValue'
+import { pickedEndDateState, pickedStartDateState } from 'recoil/dateAtom'
 import { useRecoil } from 'hooks/state'
 import { ArrowIcon } from 'assets/svgs'
 
 import styles from './dashBoard.module.scss'
 import 'react-datepicker/dist/react-datepicker.css'
+
+const FIRST_DATE = new Date('2022-02-01')
+const LAST_DATE = new Date('2022-04-20')
 
 const DashBoardHeader = () => {
   const [startDate, setStartDate] = useRecoil(pickedStartDateState)
