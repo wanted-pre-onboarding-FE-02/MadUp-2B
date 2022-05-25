@@ -17,7 +17,7 @@ interface IData {
   roas: number
 }
 
-const transformData = (MEDIA_DATA: IData[]) => {
+const transformData = (MEDIA_DATA: IData[], startDate: string, endDate: string | null) => {
   dayjs.extend(isBetween)
   const START = '2022-02-09'
   const END = '2022-02-14'
@@ -43,7 +43,7 @@ const transformData = (MEDIA_DATA: IData[]) => {
   const mediaData = (channel: string) =>
     _.chain(MEDIA_DATA)
       .filter((item) => item.channel === channel)
-      .filter((item) => dayjs(item.date).isBetween(START, END, undefined, '[]'))
+      .filter((item) => dayjs(item.date).isBetween(startDate, endDate, undefined, '[]'))
       .reduce((acc, cur) => {
         const tt = funArr.map((f, i) => [acc[i][0], getPlus(acc[i][1], f(cur))]) as [string, number][]
         return tt
@@ -57,9 +57,7 @@ const transformData = (MEDIA_DATA: IData[]) => {
 
   const total = _.chain(_.cloneDeep(dataList))
     .reduce((acc, cur) => {
-      for (const key in cur) {
-        if (Object.prototype.hasOwnProperty.call(cur, key)) acc[key] += cur[key]
-      }
+      for (const key in cur) if (Object.prototype.hasOwnProperty.call(cur, key)) acc[key] += cur[key]
       return acc
     })
     .value()
