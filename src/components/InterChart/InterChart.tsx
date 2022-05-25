@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { useRecoilValue } from 'recoil'
-import { VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, VictoryVoronoiContainer, VictoryTooltip } from 'victory'
+import { VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, VictoryVoronoiContainer } from 'victory'
 
 import { firstCurrentData, secondCurrentData } from 'recoil/recoil.state'
 import { Data } from './convertData.util'
@@ -54,12 +54,15 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
         width={960}
         height={320}
         domain={{ y: [0, 1] }}
+        // containerComponent={
+        //   <VictoryVoronoiContainer
+        //     voronoiDimension='x'
+        //     labels={({ datum }) => `${Math.round(datum.y)}`}
+        //     labelComponent={<VictoryTooltip cornerRadius={5} flyoutStyle={{ fill: 'white' }} />}
+        //   />
+        // }
         containerComponent={
-          <VictoryVoronoiContainer
-            voronoiDimension='x'
-            labels={({ datum }) => `${datum.y}`}
-            labelComponent={<VictoryTooltip cornerRadius={5} flyoutStyle={{ fill: 'white' }} />}
-          />
+          <VictoryVoronoiContainer voronoiBlacklist={['redPoints']} labels={({ datum }) => `${datum.y.toFixed(1)}`} />
         }
       >
         <VictoryAxis
@@ -77,7 +80,7 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
             axis: { strokeWidth: 0 },
             grid: { stroke: 'gray', strokeWidth: 1 },
             ticks: { padding: 0 },
-            tickLabels: { fill: 'gray', textAnchor: 'middle' },
+            tickLabels: { fill: 'gray', textAnchor: 'end' },
           }}
           tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
           tickFormat={(t) => `${setUnit(firstMenuState, t * firstMaxValue)}`}
