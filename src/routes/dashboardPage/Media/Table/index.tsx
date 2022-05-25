@@ -2,16 +2,23 @@ import styles from './table.module.scss'
 import transformData from './transformData'
 import { getMediaDataApi } from 'services/fakeApi'
 import { useQuery } from 'react-query'
+import { useRecoilValue } from 'recoil'
+import { pickedEndDateState, pickedStartDateState } from 'recoil/atom'
 
 const Table = () => {
+  const startDate = useRecoilValue(pickedStartDateState)
+  const endDate = useRecoilValue(pickedEndDateState)
   const { data } = useQuery(
-    'getAdvertiseStatus',
+    ['getAdvertiseStatus', startDate, endDate],
     () =>
       getMediaDataApi().then((res) => {
-        const result = transformData(res)
+        const result = transformData(res, startDate, endDate)
         return result
       }),
-    { suspense: true }
+    {
+      enabled: !!endDate,
+      suspense: true,
+    }
   )
 
   if (!data) return null
