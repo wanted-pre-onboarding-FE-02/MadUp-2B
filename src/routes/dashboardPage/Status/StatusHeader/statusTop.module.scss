@@ -1,0 +1,51 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/position';
+
+.statusHeader {
+  @include flexbox.flexbox('between', 'center');
+  height: 80px;
+  padding: 25px 40px;
+
+  h1 {
+    font-size: 26px;
+    font-weight: 900;
+  }
+
+  .datePicker {
+    @include flexbox.flexbox('between', 'center');
+    position: relative;
+
+    button {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: colors.$MAIN_FONT;
+
+      .icon {
+        margin-left: 10px;
+      }
+    }
+
+    .pickerWrap {
+      @include position.absolute(25px -7px auto auto);
+      padding: 10px;
+      background-color: colors.$WHITE;
+      border-radius: 10px;
+      box-shadow: 4px 4px 10px rgba(colors.$BLACK, 0.1);
+
+      > div > div {
+        border: none;
+
+        > div > div:first-child {
+          background-color: colors.$WHITE;
+          border-bottom: none;
+
+          > div:first-child {
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}
