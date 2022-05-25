@@ -1,12 +1,13 @@
 import cx from 'classnames'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
+import useOnClickOutside from 'hooks/useOnClickOutside'
 import { NavLink, Link } from 'react-router-dom'
 import styles from './gnb.module.scss'
 
 import { LogoImage, DashboardIcon, ChartIcon, GuideIcon, ArrowIcon } from 'assets/svgs/index'
 
 const GNB = () => {
-  const dropdownRef = useRef<HTMLUListElement>(null)
+  const dropdownRef = useRef<HTMLDivElement>(null)
   const [selectedOption, setSelectedOption] = useState<string>('매드업')
   const [dropdownClick, setDropdownClick] = useState(false)
 
@@ -20,21 +21,7 @@ const GNB = () => {
     setDropdownClick(false)
   }
 
-  const handleClickOutside = (event: React.BaseSyntheticEvent | MouseEvent): void => {
-    if (dropdownRef.current != null) {
-      const target = event.target as HTMLButtonElement
-      if (dropdownClick && !dropdownRef.current.contains(target)) {
-        setDropdownClick(false)
-      }
-    }
-  }
-
-  useEffect(() => {
-    if (dropdownClick) document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  })
+  useOnClickOutside(dropdownRef, () => setDropdownClick(false))
 
   return (
     <nav className={styles.gnb}>
@@ -46,15 +33,11 @@ const GNB = () => {
         </h1>
         <div className={styles.serviceWrap}>
           <p className={styles.subTitle}>서비스</p>
-          <div className={styles.dropdownWrap}>
+          <div className={styles.dropdownWrap} ref={dropdownRef}>
             <button type='button' className={styles.dropdown} onClick={handleDropdownClick}>
               {selectedOption}
             </button>
-            <ul
-              className={styles.dropdownListWrap}
-              style={dropdownClick ? { display: 'block' } : { display: 'none' }}
-              ref={dropdownRef}
-            >
+            <ul className={styles.dropdownListWrap} style={dropdownClick ? { display: 'block' } : { display: 'none' }}>
               <li>
                 <button type='button' onClick={handleOptionClick}>
                   매드업

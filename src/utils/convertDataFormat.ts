@@ -1,4 +1,5 @@
-import DATA from '../data/wanted_FE_ad-list-data-set.json'
+// import DATA from '../data/wanted_FE_ad-list-data-set.json'
+import DATA from '../assets/json/AD_DATA.json'
 
 import { getConvertedCurrnecy } from './convertCurrencyFormat'
 

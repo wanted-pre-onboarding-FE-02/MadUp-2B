@@ -3,18 +3,15 @@ import DatePicker, { registerLocale } from 'react-datepicker'
 import ko from 'date-fns/locale/ko'
 import dayjs from 'dayjs'
 
-import { currentDataState, diffBetweenDataState, pickedEndDateState, pickedStartDateState } from 'recoil/atom'
+import { pickedEndDateState, pickedStartDateState } from 'recoil/atom'
 import { FIRST_DATE, LAST_DATE } from 'recoil/statusValue'
 import { useRecoil } from 'hooks/state'
-import { getCurrentData, getDiffData } from 'utils/getDiff'
 import { ArrowIcon } from 'assets/svgs'
 
-import styles from './statusTop.module.scss'
+import styles from './dashBoard.module.scss'
 import 'react-datepicker/dist/react-datepicker.css'
 
-export const StatusTop = () => {
-  const [, setCurrentData] = useRecoil(currentDataState)
-  const [, setDiffData] = useRecoil(diffBetweenDataState)
+const DashBoardHeader = () => {
   const [startDate, setStartDate] = useRecoil(pickedStartDateState)
   const [endDate, setEndDate] = useRecoil(pickedEndDateState)
 
@@ -43,10 +40,8 @@ export const StatusTop = () => {
 
   useEffect(() => {
     if (!startDate || !endDate) return
-    getCurrentData(startDate, endDate).then((currData) => setCurrentData(currData))
-    getDiffData(startDate, endDate).then((differData) => setDiffData(differData))
     registerLocale('ko', ko)
-  }, [endDate, setCurrentData, setDiffData, startDate])
+  }, [endDate, startDate])
 
   return (
     <div className={styles.statusHeader}>
@@ -74,3 +69,5 @@ export const StatusTop = () => {
     </div>
   )
 }
+
+export default DashBoardHeader
