@@ -1,12 +1,12 @@
+import { useCallback } from 'react'
 import { useRecoilValue } from 'recoil'
 import { VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, VictoryVoronoiContainer, VictoryTooltip } from 'victory'
 
 import { firstCurrentData, secondCurrentData } from 'recoil/recoil.state'
 import { Data } from './convertData.util'
+import useColorPickCallback from 'hooks/useColorPickCallback'
 
 import styles from 'styles'
-import { useCallback } from 'react'
-import useColorPickCallback from 'hooks/useColorPickCallback'
 
 interface InterChartProps {
   firstMenuState: string
@@ -19,17 +19,18 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
   const secondData = useRecoilValue(secondCurrentData)
 
   const maxValue = useCallback((value: Data[]) => {
-    return value.reduce((max, current) => (current.y > max ? current.y : max), value[0].y)
+    return Math.max(...value.map((data) => data.y))
   }, [])
-
-  const setUnit = useCallback((menuState: string) => {
+  const firstMaxValue = maxValue(firstData)
+  const secondMaxValue = maxValue(secondData)
+  const setUnit = useCallback((menuState: string, tickData: number) => {
     const tickFormSet = {
-      ROAS: '%',
-      광고비: '원',
-      노출수: 'imp',
-      클릭수: 'click',
-      전환수: 'cv',
-      매출: '원',
+      ROAS: `${Math.round(tickData)}%`,
+      광고비: `${Math.round(tickData / 10000)}만원`,
+      노출수: `${Math.round(tickData / 1000)}K`,
+      클릭수: `${Math.round(tickData)}CLK`,
+      전환수: `${Math.round(tickData)}CV`,
+      매출: `${Math.round(tickData / 10000)}만원`,
     }[menuState]
     if (!menuState) return ''
     return tickFormSet
@@ -79,12 +80,12 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
             tickLabels: { fill: 'gray', textAnchor: 'middle' },
           }}
           tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
-          tickFormat={(t) => `${Math.round(t * maxValue(firstData))} ${setUnit(firstMenuState)}`}
+          tickFormat={(t) => `${setUnit(firstMenuState, t * firstMaxValue)}`}
         />
         <VictoryLine
           data={firstData.slice(0, setDayType(thirdMenuState))}
           style={{ data: { stroke: setColor(firstMenuState) } }}
-          y={(datum) => datum.y / maxValue(firstData)}
+          y={(datum) => datum.y / firstMaxValue}
         />
         {!!secondData.length && (
           <VictoryAxis
@@ -98,13 +99,13 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
               tickLabels: { fill: 'gray', textAnchor: 'start' },
             }}
             tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
-            tickFormat={(t) => `${Math.round(t * maxValue(secondData))} ${setUnit(secondMenuState)}`}
+            tickFormat={(t) => `${setUnit(secondMenuState, t * secondMaxValue)}`}
           />
         )}
         <VictoryLine
           data={secondData.slice(0, setDayType(thirdMenuState))}
           style={{ data: { stroke: setColor(secondMenuState) } }}
-          y={(datum) => datum.y / maxValue(secondData)}
+          y={(datum) => datum.y / secondMaxValue}
         />
       </VictoryChart>
     </div>
