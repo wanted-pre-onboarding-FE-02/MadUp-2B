@@ -15,6 +15,7 @@ interface DropDownProps {
 const DropDown = ({ menuList, option, currentOption, changeCurrentMenu }: DropDownProps) => {
   const [openDropdown, setOpenDropdown] = useState(false)
   const dropDownRef = useRef<HTMLDivElement>(null)
+  const setColor = useColorPickCallback()
 
   const onClickMenuButton = (e: MouseEvent<HTMLButtonElement>) => {
     const { value } = e.currentTarget
@@ -25,7 +26,6 @@ const DropDown = ({ menuList, option, currentOption, changeCurrentMenu }: DropDo
   const onClickOpenButton = () => {
     setOpenDropdown((prev) => !prev)
   }
-  const setColor = useColorPickCallback()
 
   useOnClickOutside(dropDownRef, () => setOpenDropdown(false))
 

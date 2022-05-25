@@ -33,6 +33,7 @@ const IntergratedAdStatus = () => {
           currentOption={secondMenuState}
           changeCurrentMenu={setSecondMenuState}
         />
+        <div className={styles.justpadding} />
         <DropDown
           menuList={SelectDayAndWeekState}
           currentOption={thirdMenuState}
