@@ -3,10 +3,11 @@ import { useRecoilValue } from 'recoil'
 import { VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, VictoryVoronoiContainer } from 'victory'
 
 import { firstCurrentData, secondCurrentData } from 'recoil/recoil.state'
-import { Data } from './convertData.util'
+import { Data } from '../../../../../utils/convertData.util'
 import useColorPickCallback from 'hooks/useColorPickCallback'
 
 import styles from 'styles'
+import { pickedEndDateState, pickedStartDateState } from 'recoil/atom'
 
 interface InterChartProps {
   firstMenuState: string
@@ -17,6 +18,8 @@ interface InterChartProps {
 const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterChartProps) => {
   const firstData = useRecoilValue(firstCurrentData)
   const secondData = useRecoilValue(secondCurrentData)
+  const startDay = useRecoilValue(pickedStartDateState)
+  const endDay = useRecoilValue(pickedEndDateState)
 
   const maxValue = useCallback((value: Data[]) => {
     return Math.max(...value.map((data) => data.y))
@@ -35,6 +38,15 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
     if (!menuState) return ''
     return tickFormSet
   }, [])
+
+  const findDayIndex = (dataSet: Data[], targetDay: string | null) => {
+    if (!targetDay) return -1
+    return dataSet.findIndex((data) => data.x === targetDay)
+  }
+  const firstDataStartIndex = findDayIndex(firstData, startDay)
+  const firstDataEndIndex = findDayIndex(firstData, endDay)
+  const secondDataStartIndex = findDayIndex(secondData, startDay)
+  const secondDataEndIndex = findDayIndex(secondData, endDay)
 
   const setColor = useColorPickCallback()
 
@@ -79,7 +91,7 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
           tickFormat={(t) => `${setUnit(firstMenuState, t * firstMaxValue)}`}
         />
         <VictoryLine
-          data={firstData.slice(0, setDayType(thirdMenuState))}
+          data={firstData.slice(firstDataStartIndex, firstDataEndIndex)}
           style={{ data: { stroke: setColor(firstMenuState) } }}
           y={(datum) => datum.y / firstMaxValue}
         />
@@ -100,7 +112,7 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
           />
         )}
         <VictoryLine
-          data={secondData.slice(0, setDayType(thirdMenuState))}
+          data={secondData.slice(secondDataStartIndex, secondDataEndIndex)}
           style={{ data: { stroke: setColor(secondMenuState) } }}
           y={(datum) => datum.y / secondMaxValue}
         />
