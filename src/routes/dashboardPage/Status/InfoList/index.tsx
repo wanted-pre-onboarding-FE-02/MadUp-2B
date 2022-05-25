@@ -13,7 +13,7 @@ const InfoList = () => {
   const [endDate] = useRecoil(pickedEndDateState)
 
   const { data } = useQuery(
-    ['getTrendData', endDate],
+    ['getTrendData', startDate, endDate],
     () =>
       getTrendDataApi().then(({ report }) => {
         const newArr = getTransformedData(report.daily)
