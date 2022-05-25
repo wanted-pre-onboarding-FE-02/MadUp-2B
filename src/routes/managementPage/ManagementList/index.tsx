@@ -15,16 +15,19 @@ const ManagementList = ({ option }: { option: string }) => {
       }),
     { suspense: true }
   )
+
+  if (!data) return null
+
   return (
     <div className={styles.list}>
-      {data
-        ? data.ads
-            .filter((ad) => {
-              if (option === '전체 광고') return true
-              return option === ad.status
-            })
-            .map((ad) => <ManagementItem key={ad.id} {...ad} />)
-        : null}
+      {data.ads
+        .filter((ad) => {
+          if (option === '전체 광고') return true
+          return option === ad.status
+        })
+        .map((ad) => (
+          <ManagementItem key={ad.id} {...ad} />
+        ))}
     </div>
   )
 }

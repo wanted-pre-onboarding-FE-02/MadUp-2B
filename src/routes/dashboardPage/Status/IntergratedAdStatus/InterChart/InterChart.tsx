@@ -2,12 +2,10 @@ import { useCallback, useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
 import { VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, VictoryVoronoiContainer } from 'victory'
 
-import { firstCurrentData, secondCurrentData } from 'recoil/recoil.state'
-import { Data } from '../../../../../utils/convertData.util'
+import { pickedEndDateState, pickedStartDateState } from 'recoil/dateAtom'
+import { firstCurrentData, secondCurrentData } from 'recoil/adChartAtom'
+import { Data } from 'utils/convertData.util'
 import useColorPickCallback from 'hooks/useColorPickCallback'
-
-import styles from 'styles'
-import { pickedEndDateState, pickedStartDateState } from 'recoil/atom'
 
 interface InterChartProps {
   firstMenuState: string
@@ -61,84 +59,82 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
   }, [thirdMenuState])
 
   return (
-    <div className={styles.chart}>
-      <VictoryChart
-        theme={VictoryTheme.grayscale}
-        width={1300}
-        height={320}
-        domain={{ y: [0, 1] }}
-        containerComponent={
-          <VictoryVoronoiContainer voronoiBlacklist={['redPoints']} labels={({ datum }) => `${datum.y.toFixed(1)}`} />
-        }
-      >
-        {endDay && (
-          <VictoryAxis
-            scale='time'
-            tickFormat={(t, i) => {
-              if (firstDataEndIndex - firstDataStartIndex > 14) {
-                if (!(i % 4)) {
-                  return `${t.slice(5, 7)}월 ${t.slice(8)}일`
-                }
-                return ''
+    <VictoryChart
+      theme={VictoryTheme.grayscale}
+      width={1400}
+      height={320}
+      domain={{ y: [0, 1] }}
+      containerComponent={
+        <VictoryVoronoiContainer voronoiBlacklist={['redPoints']} labels={({ datum }) => `${datum.y.toFixed(1)}`} />
+      }
+    >
+      {endDay && (
+        <VictoryAxis
+          scale='time'
+          tickFormat={(t, i) => {
+            if (firstDataEndIndex + setDayType - firstDataStartIndex > 14) {
+              if (!(i % 7)) {
+                return `${t.slice(5, 7)}월 ${t.slice(8)}일`
               }
-              return `${t.slice(5, 7)}월 ${t.slice(8)}일`
-            }}
-            style={{
-              tickLabels: { fill: 'gray', fontSize: 12 },
-            }}
-          />
-        )}
+              return ''
+            }
+            return `${t.slice(5, 7)}월 ${t.slice(8)}일`
+          }}
+          style={{
+            tickLabels: { fill: 'gray', fontSize: 15 },
+          }}
+        />
+      )}
 
+      <VictoryAxis
+        dependentAxis
+        orientation='left'
+        offsetX={50}
+        style={{
+          axis: { strokeWidth: 0 },
+          grid: { stroke: 'gray', strokeWidth: 1 },
+          ticks: { padding: -15 },
+          tickLabels: { fill: 'gray', textAnchor: 'end' },
+        }}
+        tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
+        tickFormat={(t) => `${setUnit(firstMenuState, t * firstMaxValue)}`}
+      />
+
+      <VictoryLine
+        data={firstData.slice(firstDataStartIndex, firstDataEndIndex + 1 + setDayType)}
+        style={{ data: { stroke: setColor(firstMenuState) } }}
+        y={(datum) => datum.y / firstMaxValue}
+        animate={{
+          duration: 500,
+          onLoad: { duration: 500 },
+        }}
+      />
+
+      {!!secondData.length && (
         <VictoryAxis
           dependentAxis
-          orientation='left'
+          orientation='right'
           offsetX={50}
           style={{
             axis: { strokeWidth: 0 },
             grid: { stroke: 'gray', strokeWidth: 1 },
-            ticks: { padding: -15 },
-            tickLabels: { fill: 'gray', textAnchor: 'end' },
+            ticks: { padding: 0 },
+            tickLabels: { fill: 'gray', textAnchor: 'start', padding: 0 },
           }}
           tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
-          tickFormat={(t) => `${setUnit(firstMenuState, t * firstMaxValue)}`}
+          tickFormat={(t) => `${setUnit(secondMenuState, t * secondMaxValue)}`}
         />
-
-        <VictoryLine
-          data={firstData.slice(firstDataStartIndex, firstDataEndIndex + 1 + setDayType)}
-          style={{ data: { stroke: setColor(firstMenuState) } }}
-          y={(datum) => datum.y / firstMaxValue}
-          animate={{
-            duration: 500,
-            onLoad: { duration: 500 },
-          }}
-        />
-
-        {!!secondData.length && (
-          <VictoryAxis
-            dependentAxis
-            orientation='right'
-            offsetX={50}
-            style={{
-              axis: { strokeWidth: 0 },
-              grid: { stroke: 'gray', strokeWidth: 1 },
-              ticks: { padding: 0 },
-              tickLabels: { fill: 'gray', textAnchor: 'start', padding: 0 },
-            }}
-            tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
-            tickFormat={(t) => `${setUnit(secondMenuState, t * secondMaxValue)}`}
-          />
-        )}
-        <VictoryLine
-          data={secondData.slice(secondDataStartIndex, secondDataEndIndex + 1 + setDayType)}
-          style={{ data: { stroke: setColor(secondMenuState) } }}
-          y={(datum) => datum.y / secondMaxValue}
-          animate={{
-            duration: 500,
-            onLoad: { duration: 500 },
-          }}
-        />
-      </VictoryChart>
-    </div>
+      )}
+      <VictoryLine
+        data={secondData.slice(secondDataStartIndex, secondDataEndIndex + 1 + setDayType)}
+        style={{ data: { stroke: setColor(secondMenuState) } }}
+        y={(datum) => datum.y / secondMaxValue}
+        animate={{
+          duration: 500,
+          onLoad: { duration: 500 },
+        }}
+      />
+    </VictoryChart>
   )
 }
 

@@ -1,12 +1,5 @@
 import { ITrendDataSet } from 'types/trendDataSet'
 
-// const parseData = (rawStr: string) => {
-//   const y = Number(rawStr.substring(0, 4))
-//   const m = Number(rawStr.substring(5, 7)) - 1
-//   const d = Number(rawStr.substring(8))
-//   return new Date(y, m, d)
-// }
-
 export interface Data {
   x: string
   y: number

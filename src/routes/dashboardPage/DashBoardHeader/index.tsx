@@ -3,17 +3,21 @@ import DatePicker, { registerLocale } from 'react-datepicker'
 import ko from 'date-fns/locale/ko'
 import dayjs from 'dayjs'
 
-import { pickedEndDateState, pickedStartDateState } from 'recoil/atom'
-import { FIRST_DATE, LAST_DATE } from 'recoil/statusValue'
+import { pickedEndDateState, pickedStartDateState } from 'recoil/dateAtom'
 import { useRecoil } from 'hooks/state'
 import { ArrowIcon } from 'assets/svgs'
 
 import styles from './dashBoard.module.scss'
 import 'react-datepicker/dist/react-datepicker.css'
 
+const FIRST_DATE = new Date('2022-02-01')
+const LAST_DATE = new Date('2022-04-20')
+
 const DashBoardHeader = () => {
-  const [startDate, setStartDate] = useRecoil(pickedStartDateState)
-  const [endDate, setEndDate] = useRecoil(pickedEndDateState)
+  const [pickStart, setPickedStartDate] = useRecoil(pickedStartDateState)
+  const [pickEnd, setPickedEndDate] = useRecoil(pickedEndDateState)
+  const [startDate, setStartDate] = useState(pickStart)
+  const [endDate, setEndDate] = useState(pickEnd)
 
   const [isVisible, setIsVisible] = useState(false)
   const dayPickerRef = useRef<HTMLDivElement>(null)
@@ -27,14 +31,17 @@ const DashBoardHeader = () => {
     setIsVisible((prev) => !prev)
   }
 
-  const handleSelectDate = (dates: any) => {
+  const handleSelectDate = (dates: [Date, Date]) => {
     const [start, end] = dates
     const translatedStart = dayjs(start).format('YYYY-MM-DD')
     const translatedEnd = end && dayjs(end).format('YYYY-MM-DD')
     setStartDate(translatedStart)
     setEndDate(translatedEnd)
+
     if (start && end) {
       setIsVisible((prev) => !prev)
+      setPickedStartDate(translatedStart)
+      setPickedEndDate(translatedEnd)
     }
   }
 
