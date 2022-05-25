@@ -8,7 +8,7 @@ import {
 } from 'recoil/recoil.state'
 
 import InterChart from 'routes/dashboardPage/Status/IntergratedAdStatus/InterChart/InterChart'
-import DropDown from 'components/DropDown/DropDown'
+import DropDown from './DropDown/DropDown'
 
 import styles from './intergratedAdStatus.module.scss'
 
