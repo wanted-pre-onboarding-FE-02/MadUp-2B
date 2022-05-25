@@ -14,10 +14,10 @@ const FIRST_DATE = new Date('2022-02-01')
 const LAST_DATE = new Date('2022-04-20')
 
 const DashBoardHeader = () => {
-  const [startDate, setStartDate] = useState('2022-03-01')
-  const [endDate, setEndDate] = useState('2022-03-04')
-  const [, setPickedStartDate] = useRecoil(pickedStartDateState)
-  const [, setPickedEndDate] = useRecoil(pickedEndDateState)
+  const [pickStart, setPickedStartDate] = useRecoil(pickedStartDateState)
+  const [pickEnd, setPickedEndDate] = useRecoil(pickedEndDateState)
+  const [startDate, setStartDate] = useState(pickStart)
+  const [endDate, setEndDate] = useState(pickEnd)
 
   const [isVisible, setIsVisible] = useState(false)
   const dayPickerRef = useRef<HTMLDivElement>(null)

@@ -44,19 +44,11 @@ const PercentColumnChart = () => {
           tickFormat={(tick) => `${tick}%`}
           style={{
             axis: { stroke: 'white' },
-            grid: { stroke: 'grey' },
+            grid: { stroke: '#94A2AD' },
             tickLabels: { fontSize: 20, padding: 10 },
           }}
         />
-        <VictoryStack
-          colorScale={['#AC8AF8', '#4FADF7', '#85DA47', '#FFEB00']}
-          style={{
-            data: {
-              stroke: 'white',
-              strokeWidth: 4,
-            },
-          }}
-        >
+        <VictoryStack colorScale={['#AC8AF8', '#4FADF7', '#85DA47', '#FFEB00']}>
           {dataList.map((data, i) => {
             const key = `bar-${i}`
             return (
@@ -66,8 +58,7 @@ const PercentColumnChart = () => {
                 barRatio={0.3}
                 x='category'
                 y='value'
-                cornerRadius={{ top: 5 }}
-                labelComponent={<VictoryTooltip style={{ fontSize: 30 }} />}
+                labelComponent={<VictoryTooltip style={{ fontSize: 20 }} />}
               />
             )
           })}
@@ -75,7 +66,7 @@ const PercentColumnChart = () => {
         <VictoryAxis
           tickFormat={['광고비', '매출', '노출수', '클릭수', '전환수']}
           style={{
-            tickLabels: { fontSize: 30 },
+            tickLabels: { fontSize: 15 },
           }}
         />
       </VictoryChart>
