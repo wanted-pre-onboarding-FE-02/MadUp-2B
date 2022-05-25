@@ -30,7 +30,7 @@ const IntergratedAdStatus = () => {
 
         <DropDown
           menuList={DrowdownMenuListState}
-          option='선택사항 없음'
+          option='선택 안함'
           currentOption={secondMenuState}
           changeCurrentMenu={setSecondMenuState}
         />

@@ -39,25 +39,25 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
   const setColor = useColorPickCallback()
 
   const setUnit = useCallback((menuState: string, tickData: number) => {
-    const tickFormSet = {
-      ROAS: `${Math.round(tickData)}%`,
-      광고비: `${Math.round(tickData / 10000)}만원`,
-      노출수: `${Math.round(tickData / 1000)}K`,
-      클릭수: `${Math.round(tickData)}CLK`,
-      전환수: `${Math.round(tickData)}CV`,
-      매출: `${Math.round(tickData / 10000)}만원`,
-    }[menuState]
-    if (!menuState) return ''
+    const tickFormSet =
+      {
+        ROAS: `${Math.round(tickData)}%`,
+        광고비: `${Math.round(tickData / 10000)}만원`,
+        노출수: `${Math.round(tickData / 1000)}K`,
+        클릭수: `${Math.round(tickData)}CLK`,
+        전환수: `${Math.round(tickData)}CV`,
+        매출: `${Math.round(tickData / 10000)}만원`,
+      }[menuState] ?? ''
     return tickFormSet
   }, [])
 
-  const setDayType: number = useMemo(() => {
-    const dayCutNum = {
-      주간: 7,
-      일별: 0,
-    }[thirdMenuState]
-    if (!thirdMenuState) return 0
-    return dayCutNum as number
+  const setDayType = useMemo(() => {
+    const dayCutNum =
+      {
+        주간: 7,
+        일별: 0,
+      }[thirdMenuState] ?? 0
+    return dayCutNum
   }, [thirdMenuState])
 
   return (
@@ -76,7 +76,7 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
             scale='time'
             tickFormat={(t, i) => {
               if (firstDataEndIndex - firstDataStartIndex > 14) {
-                if (!(i % 7)) {
+                if (!(i % 4)) {
                   return `${t.slice(5, 7)}월 ${t.slice(8)}일`
                 }
                 return ''
