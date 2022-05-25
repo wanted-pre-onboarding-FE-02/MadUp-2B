@@ -63,7 +63,7 @@ const InterChart = ({ firstMenuState, secondMenuState, thirdMenuState }: InterCh
     <div className={styles.chart}>
       <VictoryChart
         theme={VictoryTheme.grayscale}
-        width={960}
+        width={1300}
         height={320}
         domain={{ y: [0, 1] }}
         containerComponent={
