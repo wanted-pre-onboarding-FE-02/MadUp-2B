@@ -27,7 +27,7 @@ const DashBoardHeader = () => {
     setIsVisible((prev) => !prev)
   }
 
-  const handleSelectDate = (dates: any) => {
+  const handleSelectDate = (dates: [Date, Date]) => {
     const [start, end] = dates
     const translatedStart = dayjs(start).format('YYYY-MM-DD')
     const translatedEnd = end && dayjs(end).format('YYYY-MM-DD')
