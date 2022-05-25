@@ -31,52 +31,7 @@
   }
 
   .serviceWrap {
-    margin-top: 53px;
-
-    .dropdownWrap {
-      position: relative;
-      margin-bottom: 53px;
-
-      .dropdown {
-        width: 100%;
-        padding: 20px;
-        font-size: 16px;
-        font-weight: 700;
-        color: colors.$MAIN_FONT;
-        text-align: left;
-        border: 1px solid colors.$BORDER;
-        border-radius: 10px;
-      }
-
-      .dropdownListWrap {
-        @include position.absolute(66px 0 auto auto);
-        display: none;
-        width: 100%;
-        background-color: colors.$WHITE;
-        border: 1px solid colors.$BORDER;
-        border-radius: 10px;
-
-        li:first-child {
-          border-bottom: 1px dashed colors.$BORDER;
-        }
-
-        button {
-          display: inline-block;
-          width: 100%;
-          padding: 15px;
-          margin-left: 4px;
-          font-size: 16px;
-          font-weight: 500;
-          color: colors.$MAIN_FONT;
-          text-align: left;
-        }
-      }
-
-      .arrowIcon {
-        @include position.absolute(27px 26px auto auto);
-        pointer-events: none;
-      }
-    }
+    margin: 53px 0;
   }
 
   .adWrap {

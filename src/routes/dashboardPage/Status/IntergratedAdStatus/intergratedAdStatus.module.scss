@@ -10,8 +10,8 @@
   .dropdownSelectBar {
     display: flex;
     align-content: center;
-    width: 960px;
-    padding: 0 35px;
+    justify-content: space-around;
+    width: 100%;
 
     .justpadding {
       width: 100%;
@@ -23,8 +23,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1060px;
-    height: 270px;
+    width: 100%;
+    height: 100%;
     margin: 40px;
     background-color: colors.$WHITE;
   }

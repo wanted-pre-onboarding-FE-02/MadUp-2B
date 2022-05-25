@@ -2,16 +2,23 @@ import styles from './table.module.scss'
 import transformData from './transformData'
 import { getMediaDataApi } from 'services/fakeApi'
 import { useQuery } from 'react-query'
+import { useRecoilValue } from 'recoil'
+import { pickedEndDateState, pickedStartDateState } from 'recoil/atom'
 
 const Table = () => {
+  const startDate = useRecoilValue(pickedStartDateState)
+  const endDate = useRecoilValue(pickedEndDateState)
   const { data } = useQuery(
-    'getAdvertiseStatus',
+    ['getAdvertiseStatus', startDate, endDate],
     () =>
       getMediaDataApi().then((res) => {
-        const result = transformData(res)
+        const result = transformData(res, startDate, endDate)
         return result
       }),
-    { suspense: true }
+    {
+      enabled: !!endDate,
+      suspense: true,
+    }
   )
 
   if (!data) return null
@@ -21,7 +28,7 @@ const Table = () => {
       <table>
         <thead>
           <tr>
-            <th> </th>
+            <th className={styles.first}> </th>
             <th>광고비</th>
             <th>매출</th>
             <th>ROAS</th>
@@ -37,25 +44,25 @@ const Table = () => {
             return (
               <tr key={key}>
                 <td className={styles.first}>{d.channel}</td>
-                <td>{d.cost}</td>
-                <td>{d.sales}</td>
-                <td>{d.roas}</td>
-                <td>{d.imp}</td>
-                <td>{d.click}</td>
-                <td>{d.ctr}</td>
-                <td>{d.cpc}</td>
+                <td>{d.cost.toLocaleString()}</td>
+                <td>{d.sales.toLocaleString()}</td>
+                <td>{d.roas.toLocaleString()}</td>
+                <td>{d.imp.toLocaleString()}</td>
+                <td>{d.click.toLocaleString()}</td>
+                <td>{d.ctr.toLocaleString()}</td>
+                <td>{d.cpc.toLocaleString()}</td>
               </tr>
             )
           })}
           <tr>
             <td className={styles.first}>총계</td>
-            <td>{total.cost}</td>
-            <td>{total.sales}</td>
-            <td>{total.roas}</td>
-            <td>{total.imp}</td>
-            <td>{total.click}</td>
-            <td>{total.ctr}</td>
-            <td>{total.cpc}</td>
+            <td>{total.cost.toLocaleString()}</td>
+            <td>{total.sales.toLocaleString()}</td>
+            <td>{total.roas.toLocaleString()}</td>
+            <td>{total.imp.toLocaleString()}</td>
+            <td>{total.click.toLocaleString()}</td>
+            <td>{total.ctr.toLocaleString()}</td>
+            <td>{total.cpc.toLocaleString()}</td>
           </tr>
         </tbody>
       </table>

@@ -1,14 +1,16 @@
-import styles from 'styles'
-import { InfoList } from './InfoList/InfoList'
+import { Suspense } from 'react'
+import Loading from 'components/Loading'
+import ContentBox from '../_shared/ContentBox'
+import InfoList from './InfoList'
 import IntergratedAdStatus from './IntergratedAdStatus/IntergratedAdStatus'
-import { StatusTop } from './StatusHeader/StatusTop'
 
 export const Status = () => {
   return (
-    <div className={styles.statusWrapper}>
-      <StatusTop />
-      <InfoList />
-      <IntergratedAdStatus />
-    </div>
+    <ContentBox title='통합 광고 현황'>
+      <Suspense fallback={<Loading />}>
+        <InfoList />
+        <IntergratedAdStatus />
+      </Suspense>
+    </ContentBox>
   )
 }

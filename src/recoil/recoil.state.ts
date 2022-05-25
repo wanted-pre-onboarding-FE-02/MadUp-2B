@@ -14,7 +14,7 @@ export const dropdownFirstMenuState = atom<string>({
 
 export const dropdownSecondMenuState = atom<string>({
   key: 'dropdownSecondMenuState',
-  default: '선택사항 없음',
+  default: '선택 안함',
 })
 
 export const dropdownThirdMenuState = atom<string>({
@@ -45,18 +45,15 @@ export const firstCurrentData = selector<Data[]>({
   key: 'firstCurrentData',
   get: ({ get }) => {
     const firstMenuID = get(dropdownFirstMenuState)
-    const result = {
-      ROAS: trendDataSet.roas,
-      광고비: trendDataSet.cost,
-      노출수: trendDataSet.imp,
-      클릭수: trendDataSet.click,
-      전환수: trendDataSet.conv,
-      매출: trendDataSet.roi,
-    }[firstMenuID]
-
-    if (!result) {
-      return []
-    }
+    const result =
+      {
+        ROAS: trendDataSet.roas,
+        광고비: trendDataSet.cost,
+        노출수: trendDataSet.imp,
+        클릭수: trendDataSet.click,
+        전환수: trendDataSet.conv,
+        매출: trendDataSet.roi,
+      }[firstMenuID] ?? []
     return result
   },
 })
@@ -65,18 +62,15 @@ export const secondCurrentData = selector<Data[]>({
   key: 'secondCurrentData',
   get: ({ get }) => {
     const secondMenuID = get(dropdownSecondMenuState)
-    const result = {
-      ROAS: trendDataSet.roas,
-      광고비: trendDataSet.cost,
-      노출수: trendDataSet.imp,
-      클릭수: trendDataSet.click,
-      전환수: trendDataSet.conv,
-      매출: trendDataSet.roi,
-    }[secondMenuID]
-
-    if (!result) {
-      return []
-    }
+    const result =
+      {
+        ROAS: trendDataSet.roas,
+        광고비: trendDataSet.cost,
+        노출수: trendDataSet.imp,
+        클릭수: trendDataSet.click,
+        전환수: trendDataSet.conv,
+        매출: trendDataSet.roi,
+      }[secondMenuID] ?? []
     return result
   },
 })

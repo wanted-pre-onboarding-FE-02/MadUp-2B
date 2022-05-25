@@ -1,10 +1,7 @@
 @use '/src/styles/constants/colors';
 
 .wrapper {
-  width: 90%;
-  // height: 50%;
-  margin: 0 auto;
-  overflow-y: auto;
+  overflow-x: auto;
 
   &::-webkit-scrollbar {
     display: block;
@@ -21,7 +18,7 @@
   }
 
   table {
-    width: 1100px;
+    width: 1350px;
   }
 
   th {
@@ -35,13 +32,15 @@
 
   th,
   td {
-    width: 12.5%;
+    width: 13%;
     height: 40px;
     line-height: 40px;
     text-align: right;
   }
 
+  th.first,
   td.first {
+    width: 5%;
     text-align: left;
   }
 }

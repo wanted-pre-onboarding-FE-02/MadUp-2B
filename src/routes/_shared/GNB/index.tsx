@@ -1,28 +1,13 @@
 import cx from 'classnames'
-import { useState, useRef } from 'react'
-import useOnClickOutside from 'hooks/useOnClickOutside'
 import { NavLink, Link } from 'react-router-dom'
 import styles from './gnb.module.scss'
 
-import { LogoImage, DashboardIcon, ChartIcon, GuideIcon, ArrowIcon } from 'assets/svgs/index'
+import { LogoImage, DashboardIcon, ChartIcon, GuideIcon } from 'assets/svgs/index'
+import Dropdown from 'components/Dropdown'
+
+const TEXT_LIST = ['매드업', '서비스 추가하기']
 
 const GNB = () => {
-  const dropdownRef = useRef<HTMLDivElement>(null)
-  const [selectedOption, setSelectedOption] = useState<string>('매드업')
-  const [dropdownClick, setDropdownClick] = useState(false)
-
-  const handleDropdownClick = () => {
-    setDropdownClick((prev) => !prev)
-  }
-
-  const handleOptionClick = (event: React.MouseEvent<HTMLElement>) => {
-    const targetText = (event.target as HTMLElement).textContent
-    setSelectedOption(targetText as string)
-    setDropdownClick(false)
-  }
-
-  useOnClickOutside(dropdownRef, () => setDropdownClick(false))
-
   return (
     <nav className={styles.gnb}>
       <div className={styles.top}>
@@ -33,24 +18,7 @@ const GNB = () => {
         </h1>
         <div className={styles.serviceWrap}>
           <p className={styles.subTitle}>서비스</p>
-          <div className={styles.dropdownWrap} ref={dropdownRef}>
-            <button type='button' className={styles.dropdown} onClick={handleDropdownClick}>
-              {selectedOption}
-            </button>
-            <ul className={styles.dropdownListWrap} style={dropdownClick ? { display: 'block' } : { display: 'none' }}>
-              <li>
-                <button type='button' onClick={handleOptionClick}>
-                  매드업
-                </button>
-              </li>
-              <li>
-                <button type='button' onClick={handleOptionClick}>
-                  서비스 추가하기
-                </button>
-              </li>
-            </ul>
-            <ArrowIcon className={styles.arrowIcon} />
-          </div>
+          <Dropdown list={TEXT_LIST} />
         </div>
         <div className={styles.adWrap}>
           <p className={styles.subTitle}>광고 센터</p>
