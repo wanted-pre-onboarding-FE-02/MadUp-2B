@@ -44,11 +44,11 @@ const convertView = (view: number | string | undefined) => {
 
   while (Math.floor(getDivide(Number(view), division)) > 0) {
     if (index >= 2) {
-      answer = `${getDivide(Number(view), division).toFixed(0).toLocaleString()}억`
+      answer = `${Number(getDivide(Number(view), division).toFixed(0)).toLocaleString()}억`
       return answer
     }
 
-    answer = `${getDivide(Number(view), 10000).toFixed(0).toLocaleString()}만`
+    answer = `${Number(getDivide(Number(view), 10000).toFixed(0)).toLocaleString()}만`
     division = unit ** (index += 1)
   }
   return answer
