@@ -29,6 +29,7 @@
 
     .pickerWrap {
       @include position.absolute(25px -7px auto auto);
+      z-index: 1001;
       padding: 10px;
       background-color: colors.$WHITE;
       border-radius: 10px;
