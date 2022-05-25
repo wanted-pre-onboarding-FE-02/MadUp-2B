@@ -1,0 +1,42 @@
+@use '/src/styles/constants/colors' as color;
+
+.dropbar {
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  color: color.$MANAGEMENT_DROPBAR_TEXT;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 123px;
+    height: 40px;
+    padding: 12px 20px;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    border: 1px solid color.$MANAGEMENT_BORDER_COLOR;
+    border-radius: 10px;
+
+    & .icon {
+      width: 12px;
+      color: inherit;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: 45px;
+    width: 123px;
+    padding: 7px 20px;
+    background-color: color.$WHITE;
+    border: 1px solid color.$MANAGEMENT_BORDER_COLOR;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, $alpha: 0.04);
+
+    & li {
+      padding: 7px 0;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@use '/src/styles/constants/colors';
+
+.statusBoard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 42px;
+}

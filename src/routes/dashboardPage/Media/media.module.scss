@@ -1,0 +1,9 @@
+@use '/src/styles/constants/colors';
+
+.wrapper {
+  width: 1039px;
+  height: 654px;
+  background: colors.$WHITE;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px 0 #0000000a;
+}

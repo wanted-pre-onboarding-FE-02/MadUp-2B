@@ -1,0 +1,62 @@
+@use '../../styles/constants/colors' as color;
+@keyframes rotateLoading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loadingTextOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.wrapper {
+  position: relative;
+  margin: 40px auto;
+
+  .spinner {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border: 2px solid transparent;
+    border-color: transparent color.$TEXT_ACTIVE;
+    border-radius: 100%;
+    transform-origin: 50% 50%;
+    animation: rotateLoading 1.5s linear 0s infinite normal;
+  }
+
+  .text {
+    position: absolute;
+    top: 0;
+    width: 100px;
+    margin-top: 45px;
+    font-size: 10px;
+    font-weight: bold;
+    color: color.$BLACK;
+    text-align: center;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: loadingTextOpacity 2s linear 0s infinite normal;
+  }
+
+  &:hover .spinner {
+    border-color: transparent #e45635;
+  }
+}

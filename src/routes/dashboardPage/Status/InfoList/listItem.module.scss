@@ -1,0 +1,45 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.listItem {
+  @include flexbox.flexbox('between', 'end');
+  min-width: 304px;
+  padding: 18px 40px;
+  margin: 10px;
+  border: 0.5px solid colors.$ITEM_BORDER;
+  border-radius: 10px;
+
+  dl {
+    dt {
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: colors.$MUTED_COLOR;
+    }
+
+    dd {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .diffValue {
+      font-size: 12px;
+      font-weight: 500;
+      color: colors.$MUTED_COLOR;
+
+      .isNothing {
+        margin-right: 5px;
+        font-size: 16px;
+        font-weight: 700;
+        color: colors.$MUTED_COLOR;
+      }
+
+      .upAndDown {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.isNotVisible {
+  display: none;
+}
