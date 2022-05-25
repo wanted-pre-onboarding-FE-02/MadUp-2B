@@ -2,7 +2,7 @@
 - 차트가 있는 웹사이트 개발
 - 팀원: 김준엽 김항래 김보현 최덕희 최민정
 - 기간: 5/23 ~ 5/25
-- 배포:
+- 배포: https://628e4416b6ae6b27243ce145--frabjous-truffle-c0dfb7.netlify.app/
 
 ## 기술스택
 - React, TypeScript
