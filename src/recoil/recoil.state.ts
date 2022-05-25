@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil'
 
-import { Data, convertData } from 'routes/dashboardPage/Status/IntergratedAdStatus/InterChart/convertData.util'
+import { Data, convertData } from '../utils/convertData.util'
 import TRENDDATASET from '../routes/dashboardPage/Status/IntergratedAdStatus/InterChart/trendDataSet.json'
 
 const drowdownMenuList = ['ROAS', '광고비', '노출수', '클릭수', '전환수', '매출']
