@@ -58,7 +58,7 @@ const PercentColumnChart = () => {
                 barRatio={0.3}
                 x='category'
                 y='value'
-                labelComponent={<VictoryTooltip style={{ fontSize: 20 }} />}
+                labelComponent={<VictoryTooltip style={{ fontSize: 16 }} />}
               />
             )
           })}
