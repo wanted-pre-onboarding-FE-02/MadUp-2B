@@ -1,34 +1,21 @@
 import { getDivide } from './num'
 
-export const convertFormat = (value: number | string | undefined, keyword: string) => {
-  let transformedValue: number | string = ''
-
+export const convertTrendFormat = (value: number | string | undefined, keyword: string) => {
   const newValue = Math.abs(Number(value))
   if (isNaN(newValue)) return undefined
 
-  switch (keyword) {
-    case 'roas':
-      transformedValue = `${newValue?.toLocaleString()}%`
-      break
-    case 'cost':
-      transformedValue = `${convertView(newValue)}원`
-      break
-    case 'imp':
-      transformedValue = `${convertView(newValue)}회`
-      break
-    case 'click':
-      transformedValue = `${convertView(newValue)}회`
-      break
-    case 'conv':
-      transformedValue = `${convertView(newValue)}회`
-      break
-    case 'sales':
-      transformedValue = `${convertView(newValue)}원`
-      break
-    default:
-      return undefined
-  }
-  return transformedValue
+  const trendUnit = {
+    roas: '%',
+    cost: '원',
+    imp: '회',
+    click: '회',
+    conv: '회',
+    sales: '원',
+  }[keyword]
+
+  const isRoas = keyword === 'roas' ? newValue?.toLocaleString() : convertView(newValue)
+
+  return `${isRoas}${trendUnit}`
 }
 
 const convertView = (view: number | string | undefined) => {

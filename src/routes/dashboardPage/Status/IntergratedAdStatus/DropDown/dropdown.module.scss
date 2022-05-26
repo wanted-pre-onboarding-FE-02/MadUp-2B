@@ -11,10 +11,10 @@
   margin: 0 5px;
   background-color: colors.$WHITE;
   background-color: colors.$WHITE;
-  border: 1px solid #d1d8dc;
   border-radius: 10px;
 
   .currentMenu {
+    position: relative;
     width: 123px;
     height: 40px;
     font-size: 12px;
@@ -27,9 +27,7 @@
     }
 
     &.red {
-      position: relative;
-      width: 123px;
-      height: 40px;
+      border: 1px solid #d1d8dc;
 
       &::before {
         position: absolute;
@@ -44,9 +42,7 @@
     }
 
     &.orange {
-      position: relative;
-      width: 123px;
-      height: 40px;
+      border: 1px solid #d1d8dc;
 
       &::before {
         position: absolute;
@@ -61,9 +57,7 @@
     }
 
     &.gold {
-      position: relative;
-      width: 123px;
-      height: 40px;
+      border: 1px solid #d1d8dc;
 
       &::before {
         position: absolute;
@@ -78,9 +72,7 @@
     }
 
     &.green {
-      position: relative;
-      width: 123px;
-      height: 40px;
+      border: 1px solid #d1d8dc;
 
       &::before {
         position: absolute;
@@ -95,9 +87,7 @@
     }
 
     &.blue {
-      position: relative;
-      width: 123px;
-      height: 40px;
+      border: 1px solid #d1d8dc;
 
       &::before {
         position: absolute;
@@ -112,9 +102,7 @@
     }
 
     &.purple {
-      position: relative;
-      width: 123px;
-      height: 40px;
+      border: 1px solid #d1d8dc;
 
       &::before {
         position: absolute;
@@ -141,11 +129,11 @@
     border-radius: 10px;
 
     .menuItem {
-      &.red {
-        position: relative;
-        width: 123px;
-        height: 40px;
+      position: relative;
+      width: 123px;
+      height: 40px;
 
+      &.red {
         &::before {
           position: absolute;
           top: 15px;
@@ -159,10 +147,6 @@
       }
 
       &.orange {
-        position: relative;
-        width: 123px;
-        height: 40px;
-
         &::before {
           position: absolute;
           top: 15px;
@@ -176,10 +160,6 @@
       }
 
       &.gold {
-        position: relative;
-        width: 123px;
-        height: 40px;
-
         &::before {
           position: absolute;
           top: 15px;
@@ -193,10 +173,6 @@
       }
 
       &.green {
-        position: relative;
-        width: 123px;
-        height: 40px;
-
         &::before {
           position: absolute;
           top: 15px;
@@ -210,10 +186,6 @@
       }
 
       &.blue {
-        position: relative;
-        width: 123px;
-        height: 40px;
-
         &::before {
           position: absolute;
           top: 15px;
@@ -227,10 +199,6 @@
       }
 
       &.purple {
-        position: relative;
-        width: 123px;
-        height: 40px;
-
         &::before {
           position: absolute;
           top: 15px;

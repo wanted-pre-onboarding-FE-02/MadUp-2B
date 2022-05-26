@@ -4,6 +4,7 @@
 
 .statusHeader {
   @include flexbox.flexbox('between', 'center');
+  min-width: 400px;
   height: 80px;
   padding: 25px 40px;
 
