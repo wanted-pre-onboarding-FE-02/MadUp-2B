@@ -66,6 +66,7 @@ const DashBoardHeader = () => {
               onChange={handleSelectDate}
               startDate={START_DATE}
               endDate={END_DATE}
+              selected={START_DATE}
               selectsRange
               disabledKeyboardNavigation
               inline
