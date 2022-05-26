@@ -3,26 +3,9 @@ import AD_DATA from 'assets/json/AD_DATA.json'
 import TREND_DATA from 'assets/json/TREND_DATA.json'
 import { IMediaData } from 'types/media.d'
 import { IReportDataSet } from 'types/trendDataSet'
+import { IAdData } from 'types/adListDataSet'
 
-export interface IAdData {
-  count: number
-  ads: {
-    id: number
-    adType: string
-    title: string
-    budget: number
-    status: string
-    startDate: string
-    endDate: string | null
-    report: {
-      cost: number
-      convValue: number
-      roas: number
-    }
-  }[]
-}
-
-const DELAY_TIME = 2000
+const DELAY_TIME = 1000
 export const getMediaDataApi = (): Promise<IMediaData[]> =>
   new Promise((resolve) => {
     setTimeout(() => {

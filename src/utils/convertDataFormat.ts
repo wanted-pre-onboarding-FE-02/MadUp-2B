@@ -1,5 +1,4 @@
-import { IAdData } from 'services/fakeApi'
-
+import { IAdData } from 'types/adListDataSet'
 import { getConvertedCurrnecy } from './convertCurrencyFormat'
 
 export const getConvertedData = (AD_DATA: IAdData) => {
