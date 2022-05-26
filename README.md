@@ -10,6 +10,48 @@
 - 차트 라이브러리: Victory
 - datepicker 라이브러리: react-datepicker
 
+## 폴더구조
+
+````
+├─assets
+│  ├─json
+│  └─svgs
+├─components
+│  ├─Loading
+│  └─Profile
+├─hooks
+│  └─state
+├─recoil
+├─routes
+│  ├─dashboardPage
+│  │  ├─DashBoardHeader
+│  │  ├─Media
+│  │  │  ├─PercentColumnChart
+│  │  │  │  └─ChartLegend
+│  │  │  └─Table
+│  │  ├─Status
+│  │  │  ├─InfoList
+│  │  │  └─IntergratedAdStatus
+│  │  │      ├─DropDown
+│  │  │      └─InterChart
+│  │  └─_shared
+│  │      └─ContentBox
+│  ├─managementPage
+│  │  ├─ManagementItem
+│  │  ├─ManagementList
+│  │  └─OptionBar
+│  │      └─Dropbar
+│  └─_shared
+│      └─GNB
+├─services
+├─styles
+│  ├─base
+│  ├─constants
+│  └─mixins
+├─types
+└─utils
+````
+
 ## 기능
 - 대시보드: 선택된 날짜에 따라 통합광고 현황과 매체 현황이 표시됩니다.
   - 날짜선택: 달력으로 날짜를 선택합니다.
