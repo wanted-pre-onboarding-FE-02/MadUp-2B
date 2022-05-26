@@ -63,11 +63,11 @@ const DashBoardHeader = () => {
             <DatePicker
               minDate={FIRST_DATE}
               maxDate={LAST_DATE}
-              selected={START_DATE}
               onChange={handleSelectDate}
               startDate={START_DATE}
               endDate={END_DATE}
               selectsRange
+              disabledKeyboardNavigation
               inline
             />
           </div>
