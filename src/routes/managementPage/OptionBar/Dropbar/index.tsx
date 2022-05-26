@@ -1,4 +1,6 @@
-import { useState, MouseEvent } from 'react'
+import { useState, useRef, MouseEvent } from 'react'
+
+import useOnClickOutside from 'hooks/useOnClickOutside'
 
 import styles from './dropbar.module.scss'
 
@@ -11,10 +13,13 @@ interface Prop {
 
 const Dropbar = ({ setSelectOption, selectedOption }: Prop) => {
   const [isDropbarClicked, setIsDropbarClicked] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const handleDropbar = () => {
     setIsDropbarClicked((prev) => !prev)
   }
+
+  useOnClickOutside(dropdownRef, () => setIsDropbarClicked(false))
 
   const handleOption = (e: MouseEvent<HTMLButtonElement>) => {
     setSelectOption(e.currentTarget.innerText)
@@ -22,7 +27,7 @@ const Dropbar = ({ setSelectOption, selectedOption }: Prop) => {
   }
 
   return (
-    <div className={styles.dropbar}>
+    <div className={styles.dropbar} ref={dropdownRef}>
       <button type='button' className={styles.dropbar__btn} onClick={handleDropbar}>
         {selectedOption} <ArrowIcon className={styles.icon} />
       </button>
